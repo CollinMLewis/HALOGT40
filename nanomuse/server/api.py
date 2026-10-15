@@ -1,4 +1,4 @@
-"""HTTP + WebSocket API for the nanoMuse app (and anything else that wants to talk to your nanoMuse).
+"""HTTP + WebSocket API for the Halo app (and anything else that wants to talk to your Halo).
 
     GET  /api/state                      snapshot: profile, status, threads, goals, settings
     GET  /api/threads                    list threads          POST /api/threads {title}
@@ -492,7 +492,7 @@ def create_app(settings: Settings, service: MuseService | None = None) -> FastAP
             await svc.stop()
 
     app = FastAPI(
-        title="nanoMuse",
+        title="Halo",
         version=svc.settings_view()["version"],
         lifespan=lifespan,
         docs_url=None,
@@ -1351,7 +1351,7 @@ def create_app(settings: Settings, service: MuseService | None = None) -> FastAP
 
     @app.post("/api/cloud/models", dependencies=dep)
     async def cloud_models(body: CloudModelsBody) -> dict[str, Any]:
-        """*Use nanoMuse Cloud models*: off, the account's models leave the automatic order
+        """*Use Halo Cloud models*: off, the account's models leave the automatic order
         of the hands, pictures and clips and the providers' listing; the sign-in stays.
         ``409 chat_on_cloud`` while the chat model is the account's."""
         try:
@@ -1361,7 +1361,7 @@ def create_app(settings: Settings, service: MuseService | None = None) -> FastAP
 
     @app.post("/api/cloud/contribute", dependencies=dep)
     async def cloud_contribute(body: CloudContributeBody) -> dict[str, Any]:
-        """Data controls: turn "Help improve nanoMuse's AI models" on or off for the account
+        """Data controls: turn "Help improve Halo's AI models" on or off for the account
         (the relay keeps the text of chat turns only while it is on)."""
         try:
             return await svc.hub.set_contribute(body.on)
@@ -1536,7 +1536,7 @@ def create_app(settings: Settings, service: MuseService | None = None) -> FastAP
     @app.post("/api/hub/join", dependencies=dep)
     async def hub_join() -> dict[str, Any]:
         if not svc.hub.signed_in:
-            raise HTTPException(401, "Sign in to nanoMuse Cloud first.")
+            raise HTTPException(401, "Sign in to Halo Cloud first.")
         await svc.hub.set_enabled(True)
         return svc.hub.view()
 
@@ -2058,7 +2058,7 @@ def create_app(settings: Settings, service: MuseService | None = None) -> FastAP
         async def no_frontend() -> Response:
             return JSONResponse(
                 {
-                    "message": "nanoMuse API is running, but the web app is not built. "
+                    "message": "Halo API is running, but the web app is not built. "
                     "Run `cd web && npm install && npm run build` or use the CLI (`nanomuse chat`).",
                 }
             )

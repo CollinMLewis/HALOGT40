@@ -48,7 +48,7 @@ function inlineCode(props: ComponentPropsWithoutRef<"code">): boolean {
 }
 
 /**
- * Muse breaks a long reply into several bubbles — one per top-level block (a paragraph, a list,
+ * Halo breaks a long reply into several bubbles — one per top-level block (a paragraph, a list,
  * a heading with what follows it). Fenced code, tables and raw HTML stay whole and are marked
  * `bare`, since they carry their own frame. Blocks are split on blank lines outside fences.
  */

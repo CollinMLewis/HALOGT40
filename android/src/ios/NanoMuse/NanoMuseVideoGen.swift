@@ -163,7 +163,7 @@ enum NanoMuseVideoGen {
         request.httpMethod = method
         if let key { request.setValue("Bearer \(key)", forHTTPHeaderField: "Authorization") }
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0"
-        request.setValue("nanoMuse-iOS/\(version)", forHTTPHeaderField: "User-Agent")
+        request.setValue("Halo-iOS/\(version)", forHTTPHeaderField: "User-Agent")
         return request
     }
 

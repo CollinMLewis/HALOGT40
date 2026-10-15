@@ -2,7 +2,7 @@
 
 The agent creates a goal, drafts a plan, and advances one step at a time; the
 ``nanomuse goals run`` command (or the daemon) keeps advancing goals in the
-background – the "keeps working after you close the app" part of Muse.
+background – the "keeps working after you close the app" part of Halo.
 
 A goal has a category (health, finance, career, …), an optional target date, an
 optional check-in cadence (the agent sends a short reminder and asks how it is

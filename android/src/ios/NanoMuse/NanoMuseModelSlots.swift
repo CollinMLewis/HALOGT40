@@ -54,8 +54,8 @@ enum NanoMuseSlot: String, CaseIterable, Identifiable, Sendable {
         case .chat: return AppLocalized("The model that talks with you.")
         // iPhones cannot operate their own screen: the row is there, disabled, and says where the setting lives.
         case .hands: return AppLocalized("Your computer uses its own setting.")
-        case .image: return AppLocalized("Portraits of your Muse and the pictures you ask for.")
-        case .video: return AppLocalized("Short clips of your Muse.")
+        case .image: return AppLocalized("Portraits of your Halo and the pictures you ask for.")
+        case .video: return AppLocalized("Short clips of your Halo.")
         }
     }
 
@@ -302,7 +302,7 @@ enum NanoMuseRelayMenu {
 @MainActor
 enum NanoMuseModelSlots {
     /// Posted after a slot changed here, so the rows and the face re-read what is set.
-    static let changed = Notification.Name("nanoMuse.modelSlotsChanged")
+    static let changed = Notification.Name("Halo.modelSlotsChanged")
 
     /// Whether a model of a provider of one's own can hold a conversation: it writes text and
     /// is not one of the picture or video models the same key lists.
@@ -634,7 +634,7 @@ enum NanoMuseModelSlots {
     }
 }
 
-// MARK: - "Use nanoMuse Cloud this time"
+// MARK: - "Use Halo Cloud this time"
 
 /// A turn on a key of one's own failed and the person asked for nanoMuse Cloud once: while
 /// armed, the chat resolves its model to the relay's chat model (one `// nanoMuse:` line at the

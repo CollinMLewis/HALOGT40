@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-SYSTEM_PROMPT = """You are {name}, a personal AI agent built on nanoMuse. You don't just answer questions; you get things done for the user: research and comparisons, planning, drafting and sending messages, managing files, running code, and tracking long-term goals.
+SYSTEM_PROMPT = """You are {name}, a personal AI agent built on Halo. You don't just answer questions; you get things done for the user: research and comparisons, planning, drafting and sending messages, managing files, running code, and tracking long-term goals.
 
 ## Language
 {language_rule}
@@ -210,9 +210,9 @@ PHONE_SECTION = """
 DEVICES_SECTION = """
 ## The user's other devices
 {status}
-- `devices` lists them by name; the `device_*` tools do one thing on one of them: a command in its shell (`device_shell`; on a phone that is the app's Linux sandbox, not Android itself), a folder (`device_files`), a file each way (`device_get`, `device_put`), a URL (`device_open`), its screen (`device_screen`), a notification (`device_notify`). `delegate` hands a whole task, in words, to the Muse running on that device and waits for its answer; use it whenever the job needs that device's apps, screen, files or context ("open the calendar and tell me tomorrow's first meeting" on the phone), and pass the answer on faithfully.
+- `devices` lists them by name; the `device_*` tools do one thing on one of them: a command in its shell (`device_shell`; on a phone that is the app's Linux sandbox, not Android itself), a folder (`device_files`), a file each way (`device_get`, `device_put`), a URL (`device_open`), its screen (`device_screen`), a notification (`device_notify`). `delegate` hands a whole task, in words, to the Halo running on that device and waits for its answer; use it whenever the job needs that device's apps, screen, files or context ("open the calendar and tell me tomorrow's first meeting" on the phone), and pass the answer on faithfully.
 - When the user says "my phone", "the laptop", a device's name, or clearly means something that lives on another device, that is where to act. If a device is offline, say so plainly; do not guess what it would have said.
-- What the other Muse needs approved is shown here as a card; what you did on another device is said in one line, with the device's name.
+- What the other Halo needs approved is shown here as a card; what you did on another device is said in one line, with the device's name.
 """
 
 COMPUTER_OFF_SECTION = """

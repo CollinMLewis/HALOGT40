@@ -1,5 +1,5 @@
 /**
- * The Electron shell's bridge, when the page runs inside nanoMuse Desktop
+ * The Electron shell's bridge, when the page runs inside Halo Desktop
  * (`harness/desktop/src/preload.ts` puts it on `window`). In a browser, or in
  * dsh's own desktop, it is absent and every caller here falls back to what a
  * web page can do: nothing for the system permissions, `window.open` for links.
@@ -53,7 +53,7 @@ export interface HarnessBridge {
   platform: string
   /** `appImage` (1.0.0): the Linux build runs from an AppImage, so an update should be one too. */
   info(): Promise<{ version: string; platform: string; arch: string; appImage?: boolean }>
-  // `helper` since 0.1.38: true when "nanoMuse Computer Use" (the shell's helper app) holds the
+  // `helper` since 0.1.38: true when "Halo Computer Use" (the shell's helper app) holds the
   // grants — the rows to switch on in the panes are its, and a grant needs no app restart
   permissions(): Promise<Record<PermissionKind, PermissionState> & { helper?: boolean }>
   requestPermission(kind: PermissionKind): Promise<PermissionState>

@@ -160,20 +160,20 @@ struct NanoMuseFirstRunView: View {
     private var welcomePage: some View {
         NanoMuseSetupPage(
             hero: { NanoMuseBrandMark(size: 96) },
-            title: AppLocalized("Welcome to nanoMuse"),
+            title: AppLocalized("Welcome to Halo"),
             subtitle: AppLocalized("An open-source personal agent for every device you own."),
             primaryLabel: AppLocalized("Sign in · free"),
             onPrimary: { showSignIn = true },
             secondaryLabel: AppLocalized("Use your own API key instead"),
             onSecondary: { NanoMuseFirstRun.markSourceChosen(); sourceChosen = true; showOwnKey = true },
             finePrint: AppLocalized("One account keeps your devices together and carries the free model use; nothing is charged. Your own API key can be added right after."),
-            learnMore: URL(string: "https://github.com/nano-muse/nanoMuse/blob/main/docs/cloud.md")
+            learnMore: URL(string: "https://github.com/CollinMLewis/HALOGT40/blob/main/docs/cloud.md")
         ) {
             NanoMuseFeatureRow(symbol: "bubble.left.and.bubble.right", title: AppLocalized("Chat, pictures, video"), subtitle: AppLocalized("A capable model, image and video generation, tools, skills and memory, on your phone"))
             NanoMuseFeatureRow(symbol: "desktopcomputer", title: AppLocalized("Reach: your computers, from here"), subtitle: AppLocalized("Pair a Mac, Windows or Linux machine and give it work from the phone"))
             // Android's third row is Hands (it uses the phone); the iPhone has no such service, so: goals and the feed.
             NanoMuseFeatureRow(symbol: "calendar.badge.clock", title: AppLocalized("Goals and a daily feed"), subtitle: AppLocalized("It checks in on what you are working towards and writes you a short post every morning"))
-            NanoMuseNoticeCard(title: AppLocalized("Free, open source, non-profit"), body: AppLocalized("nanoMuse is a non-profit open-source community project, free, forever. The model comes with a free allowance paid by the developer; after that, your own key. Nothing is sold; what the relay keeps is in the privacy policy, and Settings → Data controls is yours."))
+            NanoMuseNoticeCard(title: AppLocalized("Free, open source, non-profit"), body: AppLocalized("Halo is a non-profit open-source community project, free, forever. The model comes with a free allowance paid by the developer; after that, your own key. Nothing is sold; what the relay keeps is in the privacy policy, and Settings → Data controls is yours."))
                 .padding(.top, 8)
         }
     }
@@ -184,13 +184,13 @@ struct NanoMuseFirstRunView: View {
             hero: { NanoMuseHeroGlyph(symbol: "cloud") },
             title: AppLocalized("Which model answers?"),
             subtitle: AppLocalized("Your account already brings one. You can add your own API key as well and switch at any time."),
-            primaryLabel: AppLocalized("Use the nanoMuse Cloud model"),
+            primaryLabel: AppLocalized("Use the Halo Cloud model"),
             onPrimary: { NanoMuseFirstRun.markSourceChosen(); sourceChosen = true },
             secondaryLabel: AppLocalized("I have my own API key"),
             onSecondary: { NanoMuseFirstRun.markSourceChosen(); sourceChosen = true; showOwnKey = true },
             finePrint: AppLocalized("The two do not compete: the Cloud model stays available, and each model group picks its own.")
         ) {
-            NanoMuseFeatureRow(symbol: "cloud", title: AppLocalized("Use the nanoMuse Cloud model"), subtitle: AppLocalized("DeepSeek for chat, with pictures and clips too, and a free allowance per account paid by the developer. Nothing to configure."))
+            NanoMuseFeatureRow(symbol: "cloud", title: AppLocalized("Use the Halo Cloud model"), subtitle: AppLocalized("DeepSeek for chat, with pictures and clips too, and a free allowance per account paid by the developer. Nothing to configure."))
             NanoMuseFeatureRow(symbol: "key", title: AppLocalized("I have my own API key"), subtitle: AppLocalized("Alibaba Cloud Bailian, OpenRouter, OpenAI, Anthropic, DeepSeek and other OpenAI-compatible endpoints. The key stays on this phone."))
         }
     }
@@ -295,7 +295,7 @@ struct NanoMuseNotificationsPage: View {
             onPrimary: { if granted { onDone() } else { ask() } },
             secondaryLabel: granted ? nil : AppLocalized("Skip for now"),
             onSecondary: onDone,
-            finePrint: AppLocalized("Everything else works without it. It lives under iOS Settings → nanoMuse whenever you want it."),
+            finePrint: AppLocalized("Everything else works without it. It lives under iOS Settings → Halo whenever you want it."),
             busy: busy
         ) {
             NanoMuseFeatureRow(symbol: "clock", title: AppLocalized("Routines"), subtitle: AppLocalized("A message the agent sends itself at a set time: the feed every morning, anything you schedule."))
@@ -490,7 +490,7 @@ final class NanoMuseFirstConversation: ObservableObject {
     static let shared = NanoMuseFirstConversation()
 
     nonisolated static let block = "naming"
-    nonisolated static let takenNames = "Siri, Alexa, Cortana, Jarvis, Muse, Gemini, Copilot, 小爱, 小度, 小艺, 天猫精灵, 豆包, 文心, 通义, 阿福"
+    nonisolated static let takenNames = "Siri, Alexa, Cortana, Jarvis, Halo, Gemini, Copilot, 小爱, 小度, 小艺, 天猫精灵, 豆包, 文心, 通义, 阿福"
     nonisolated static let maxName = 16
     nonisolated static let namePoolEN = ["Pip", "Wren", "Juno", "Remy", "Tilly", "Milo", "Sol", "Fig"]
     nonisolated static let namePoolZH = ["豆丁", "小满", "团团", "叮叮", "小北", "一一", "小竹", "阿岳"]
@@ -561,8 +561,8 @@ final class NanoMuseFirstConversation: ObservableObject {
     /// The three opening paragraphs, in the app's language.
     func intro() -> [String] {
         [
-            AppLocalized("Hi, I'm nanoMuse, the assistant that lives on your phone. Let me take a few things off your plate."),
-            AppLocalized("A bit about how I work:\n\n- I have my own computer, a Linux sandbox and a browser, so I can run commands, open websites and fill in forms.\n- I can read and organise the files and photos you share with me, and take care of reminders and scheduled tasks.\n- Before any step that matters, I ask you first.\n- Everything runs on this phone. Your messages go to the model you configured; signed in to nanoMuse Cloud, this conversation also follows you to your other devices. Data controls switches that off."),
+            AppLocalized("Hi, I'm Halo, the assistant that lives on your phone. Let me take a few things off your plate."),
+            AppLocalized("A bit about how I work:\n\n- I have my own computer, a Linux sandbox and a browser, so I can run commands, open websites and fill in forms.\n- I can read and organise the files and photos you share with me, and take care of reminders and scheduled tasks.\n- Before any step that matters, I ask you first.\n- Everything runs on this phone. Your messages go to the model you configured; signed in to Halo Cloud, this conversation also follows you to your other devices. Data controls switches that off."),
             AppLocalized("Before we start, what should I call you?"),
         ]
     }

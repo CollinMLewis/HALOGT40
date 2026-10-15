@@ -130,7 +130,7 @@ class WebUI:
     # ------------------------------------------------------------------ run lifecycle
     def begin_run(self, thread: str, background: str | None = None, model_used: str = "") -> None:
         """Called by the service before each agent run in ``thread``. ``model_used`` names
-        the model of a turn running on *Use nanoMuse Cloud this time*."""
+        the model of a turn running on *Use Halo Cloud this time*."""
         self.reply_shown.discard(thread)
         if model_used:
             self.model_once[thread] = model_used

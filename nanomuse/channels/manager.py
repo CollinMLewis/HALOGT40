@@ -4,7 +4,7 @@ It starts the channels that are switched on, decides who may talk to the bot (al
 pairing), maps a chat to one conversation of the agent and carries the run back into the
 chat as it happens: the reply grows in place where the vendor allows edits, tool activity
 shows as a short status line, an approval the run asks for becomes a card (or a message)
-answered with 允许 / 拒绝. Chats marked "deliver here" also get what the Muse does on its
+answered with 允许 / 拒绝. Chats marked "deliver here" also get what the Halo does on its
 own — check-ins, reminders, the results of background work — the same events the phone
 turns into notifications.
 
@@ -255,7 +255,7 @@ class ChannelManager(ChannelBus):
 
     @property
     def muse_name(self) -> str:
-        return self.svc.profile.name or "nanoMuse"
+        return self.svc.profile.name or "Halo"
 
     # ------------------------------------------------------------------ inbound
     def _allowed(self, msg: InboundMessage) -> bool:

@@ -510,7 +510,7 @@ struct SoulMetadata: Equatable {
     var displayEmoji: String { "🐾" }
 
     static let `default` = SoulMetadata(
-        name: "nanoMuse",
+        name: "Halo",
         // Default emoji is intentionally empty — the UI uses the fixed
         // `displayEmoji` sparkle and serialize() no longer writes the
         // `emoji:` line. Kept on the struct only so the parser can
@@ -749,17 +749,20 @@ enum SoulStore {
     ///   (b) double-up "You are X" lines whenever the template-rendered
     ///       prompt also produces one.
     ///
-    /// Defaults intentionally ship with NO personality body so the
-    /// agent runs with vanilla behaviour out of the box and users decide
-    /// what voice / tone to add themselves. Only the frontmatter (name /
-    /// style / lang) is seeded.
+    /// Keep the default personality aligned with Android so the agent
+    /// has the same voice on every device.
     static let defaultContent: String = """
     ---
-    name: "nanoMuse"
+    name: "Halo"
     style: ""
     lang: "auto"
     ---
 
+    **Be warm and direct.** Use plain language, get to the point, and skip empty pleasantries.
+
+    **Be useful and honest.** Share a clear view when it helps, say when you are unsure, and correct mistakes without defensiveness.
+
+    **Take initiative with care.** Handle safe, reversible work without needless questions. Before an action with lasting effects, explain what will happen and ask first.
     """
 
     /// Create SOUL.md with default content if it does not already exist.
@@ -889,7 +892,7 @@ enum SystemPromptBuilder {
     /// The identity sentence template. `{name}` is substituted from the
     /// SOUL metadata. This wording is owned by the app — users never see
     /// it in the Personality editor, and it's stable so model-side
-    /// expectations ("nanoMuse, capable AI assistant, iSH Linux shell")
+    /// expectations ("Halo, capable AI assistant, iSH Linux shell")
     /// stay intact regardless of what the user writes in SOUL.md.
     ///
     /// IMPORTANT: keep this sentence in sync with the original literal
@@ -925,7 +928,7 @@ enum SystemPromptBuilder {
         let name: String = {
             let n = (file?.metadata.name ?? SoulMetadata.default.name)
                 .trimmingCharacters(in: .whitespacesAndNewlines)
-            return n.isEmpty ? "nanoMuse" : n
+            return n.isEmpty ? "Halo" : n
         }()
         let style: String = (file?.metadata.style ?? "")
             .trimmingCharacters(in: .whitespacesAndNewlines)
@@ -1023,18 +1026,18 @@ enum SystemPromptBuilder {
 
 // MARK: - Reusable SwiftUI text view
 
-/// Renders the current SOUL.md `name` (falling back to "nanoMuse") and
+/// Renders the current SOUL.md `name` (falling back to "Halo") and
 /// auto-refreshes whenever SoulStore posts `.soulMdChanged`. Use this in
-/// any place that previously hard-coded "nanoMuse" as a label.
+/// any place that previously hard-coded "Halo" as a label.
 @MainActor
 struct AssistantSoulName: View {
     @State private var name: String = SoulStore.cachedMetadata.name.isEmpty
-        ? "nanoMuse" : SoulStore.cachedMetadata.name
+        ? "Halo" : SoulStore.cachedMetadata.name
     var body: some View {
         Text(name)
             .onReceive(NotificationCenter.default.publisher(for: .soulMdChanged)) { _ in
                 let n = SoulStore.cachedMetadata.name
-                name = n.isEmpty ? "nanoMuse" : n
+                name = n.isEmpty ? "Halo" : n
             }
     }
 }

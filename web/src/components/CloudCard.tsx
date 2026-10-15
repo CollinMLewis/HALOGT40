@@ -63,7 +63,7 @@ export function CloudCard({
   };
 
   const signOut = async () => {
-    if (!window.confirm(t("Sign out of nanoMuse Cloud on this device? The hub and the Cloud model stop working here until you sign in again."))) return;
+    if (!window.confirm(t("Sign out of Halo Cloud on this device? The hub and the Cloud model stop working here until you sign in again."))) return;
     setBusy("out");
     try {
       await api.cloudSignOut();
@@ -85,7 +85,7 @@ export function CloudCard({
   return (
     <Card
       icon={<Cloud size={20} />}
-      title={t("nanoMuse Cloud")}
+      title={t("Halo Cloud")}
       summary={summary}
       status={status}
       open={open}
@@ -97,12 +97,12 @@ export function CloudCard({
             {t("Signed in as {hint}. Your devices meet here; the Cloud model comes with a free allowance.", { hint: account?.hint ?? "" })}
           </p>
           <div className="-mx-4 border-y border-border/60">
-            <MuseSwitchRow label={t("Use nanoMuse Cloud models")} checked={modelsOn} disabled={busy !== null} onChange={(v) => void setModels(v)} />
+            <MuseSwitchRow label={t("Use Halo Cloud models")} checked={modelsOn} disabled={busy !== null} onChange={(v) => void setModels(v)} />
           </div>
           <p className="text-[12.5px] text-muted leading-relaxed">
             {modelsOn
-              ? t("nanoMuse Cloud is one of the sources for the chat, the hands, pictures and clips; what runs on it comes off your allowance.")
-              : t("Off: nothing runs on nanoMuse Cloud unless you choose it yourself. You stay signed in for sync and your devices.")}
+              ? t("Halo Cloud is one of the sources for the chat, the hands, pictures and clips; what runs on it comes off your allowance.")
+              : t("Off: nothing runs on Halo Cloud unless you choose it yourself. You stay signed in for sync and your devices.")}
           </p>
           <div className="flex flex-wrap gap-2">
             {!account?.is_model && (
@@ -121,7 +121,7 @@ export function CloudCard({
           useAsModel={useAsModel}
           autoFocus={false}
           onSignedIn={() => {
-            toast(t("Signed in to nanoMuse Cloud."));
+            toast(t("Signed in to Halo Cloud."));
             onChange();
           }}
         />

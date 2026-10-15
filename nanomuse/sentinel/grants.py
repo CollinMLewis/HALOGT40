@@ -1,6 +1,6 @@
 """Approval grants: capabilities the user handed out, bound to a tool and a target.
 
-Muse treats an approval as a strict capability, not a conversational "yes": it is bound to
+Halo treats an approval as a strict capability, not a conversational "yes": it is bound to
 the connector or destination it was given for, and it has a lifetime. Same here. A grant
 key looks like ``web_fetch:example.com``, ``send_email:alice@example.com`` or ``shell:git``;
 a bare tool name means the whole tool.

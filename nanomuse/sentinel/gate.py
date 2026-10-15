@@ -157,8 +157,8 @@ class Sentinel:
     # ------------------------------------------------------------------ per-app permission
     APP_TOOL = "computer_app"
 
-    async def allow_app(self, app_id: str, label: str = "", muse: str = "nanoMuse") -> bool:
-        """The hands' first action in an application asks: "Let <Muse> use <App>?" — once,
+    async def allow_app(self, app_id: str, label: str = "", muse: str = "Halo") -> bool:
+        """The hands' first action in an application asks: "Let <Halo> use <App>?" — once,
         for this conversation, or always. The answer is a grant under
         ``computer_app:<bundle id or name>``, so the Permissions page lists and revokes it
         like any other, and ``[sentinel] mode = "auto"`` skips it like any other."""

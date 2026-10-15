@@ -1,4 +1,4 @@
-"""The coding agents as a service of the runtime: one place the API, the hub and the Muse's
+"""The coding agents as a service of the runtime: one place the API, the hub and the Halo's
 own tool go through, on this computer or — through the hub — on another one.
 
 Local calls read the disk and start CLI runs here; ``device`` names another computer of

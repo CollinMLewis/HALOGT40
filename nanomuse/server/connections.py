@@ -230,7 +230,7 @@ _VIDEO_WORDS = ("i2v", "t2v", "video", "sora", "veo", "kling", "hailuo", "seedan
 
 
 def looks_like_image_model(model_id: str) -> bool:
-    """Names that mean "text to image" across the providers nanoMuse meets (the phone's
+    """Names that mean "text to image" across the providers Halo meets (the phone's
     ImageGen.looksLikeImageModel); edit-only models are left out — they need a picture."""
     s = model_id.lower()
     if any(w in s for w in _NOT_IMAGE) or looks_like_video_model(s):
@@ -502,16 +502,16 @@ class Connections:
     CLOUD_PRESET = "nanomuse_cloud"
 
     def _providers(self) -> dict[str, dict[str, Any]]:
-        """The catalogue, plus nanoMuse Cloud as a provider of its own while the account is
+        """The catalogue, plus Halo Cloud as a provider of its own while the account is
         signed in: the account's chat models, no key to paste (the account key is the key),
-        so the form says "nanoMuse Cloud" rather than a bare URL under "other endpoint"."""
+        so the form says "Halo Cloud" rather than a bare URL under "other endpoint"."""
         hub = getattr(self.svc, "hub", None)
         if hub is None or not hub.signed_in or not self.settings.cloud.models:
             # signed out, or the account's models switched off (``[cloud] models``)
             return PROVIDERS
         return {
             self.CLOUD_PRESET: {
-                "label": "nanoMuse Cloud",
+                "label": "Halo Cloud",
                 "subtitle": "your account's model, with a free allowance",
                 "group": "cloud",
                 "provider": "openai",
@@ -936,7 +936,7 @@ class Connections:
         that is not saved yet; otherwise the vault key is used when the endpoint is the
         configured one. Never touches settings — what the user typed in the form stays.
 
-        For nanoMuse Cloud the answer also says which chat models are on the relay's menu
+        For Halo Cloud the answer also says which chat models are on the relay's menu
         and which are the other usable models under the operator's key (``menu`` /
         ``catalog``, likewise ``image_catalog`` / ``video_catalog``), and which chat models
         read pictures (``vision``), so the pickers show a member the whole list in groups.

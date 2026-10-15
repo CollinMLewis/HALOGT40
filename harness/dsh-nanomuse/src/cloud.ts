@@ -1,5 +1,5 @@
 /**
- * nanoMuse Cloud for the harness: `ctx.nanomuseCloud`.
+ * Halo Cloud for the harness: `ctx.nanomuseCloud`.
  *
  * One account, every device. A person signs in with a mainland phone number or
  * an e-mail and a six-digit code; the relay answers with this device's key.
@@ -73,7 +73,7 @@ export const PROVIDER_ID = 'nanomuse'
 /** The profile row the Models page edits too. */
 export const LLM_ROW = 'llm-pi-ai'
 /** The `409 chat_on_cloud` body's sentence (the web client shows its own words for the code). */
-export const CHAT_ON_CLOUD_MESSAGE = 'Add a provider of your own first; with nanoMuse Cloud off, nothing else could answer.'
+export const CHAT_ON_CLOUD_MESSAGE = 'Add a provider of your own first; with Halo Cloud off, nothing else could answer.'
 /** dsh-base's stock chat default (its `agent-default-model` row): what `adoptOwnDefault` and `adoptDefaultModel` read as "nothing chosen yet". */
 export const STOCK_DEFAULT_MODEL = { provider: 'deepseek-official', model: 'deepseek-flash' } as const
 /**
@@ -104,7 +104,7 @@ export interface Config {
 }
 
 export const Config: z<Config> = z.object({
-  baseURL: z.string().default('https://cloud.nanomuse.cn').description('The nanoMuse Cloud relay.'),
+  baseURL: z.string().default('https://cloud.nanomuse.cn').description('The Halo Cloud relay.'),
   deviceName: z.string().default('').description('This device in the account\'s device list; empty means the host name.'),
   statePath: z.string().default('').description('Account snapshot file; empty means $DSH_HOME/nanomuse/cloud.json.'),
 })
@@ -330,7 +330,7 @@ export const SLOTS: readonly Slot[] = ['chat', 'hands', 'image', 'video']
 export interface SlotView {
   /** `nanomuse` for the account, an own row's id, something else of dsh's, or '' for nothing. */
   provider: string
-  /** The provider's label as the row shows it (`nanoMuse Cloud`, the row's label); '' for nothing. */
+  /** The provider's label as the row shows it (`Halo Cloud`, the row's label); '' for nothing. */
   providerLabel: string
   model: string
   options: ModelOption[]
@@ -345,7 +345,7 @@ export interface SlotView {
 /** `GET /models`: the page in one read. */
 export interface ModelsView {
   signedIn: boolean
-  /** Settings › Models › *Use nanoMuse Cloud models*: signed in and not switched off. */
+  /** Settings › Models › *Use Halo Cloud models*: signed in and not switched off. */
   cloudModels: boolean
   slots: Record<Slot, SlotView>
   /** Own rows with sighted models the hands cannot use: the runtime speaks OpenAI's shape only (their labels). */
@@ -355,7 +355,7 @@ export interface ModelsView {
 /** The "Use it for" card after a key is saved: the slots the row could take and the model each would get. */
 export type SlotOffer = Partial<Record<Slot, string>>
 
-/** The session-local switch behind *Use nanoMuse Cloud this time*: the selection to put back when the turn ends. */
+/** The session-local switch behind *Use Halo Cloud this time*: the selection to put back when the turn ends. */
 interface CloudOnce {
   provider: string
   model: string
@@ -400,10 +400,10 @@ interface State {
   /** The pool size (yuan) the 80 % heads-up was shown for; it comes back only once the pool has grown. */
   warnedGrant?: number
   /**
-   * Settings › Models › *Use nanoMuse Cloud models* switched off: the account's models leave
+   * Settings › Models › *Use Halo Cloud models* switched off: the account's models leave
    * every slot's order and list, no side call goes through the relay, and a chat that still
    * sits on a Cloud model is refused with a card. The sign-in stays (sync, the hub, the
-   * account page). Only *Use nanoMuse Cloud this time* spends the allowance while this is set.
+   * account page). Only *Use Halo Cloud this time* spends the allowance while this is set.
    */
   cloudModelsOff?: boolean
 }
@@ -590,7 +590,7 @@ export default class NanomuseCloud extends Service {
   private readonly streams = new Set<ServerResponse>()
   private readonly changeListeners = new Set<() => void>()
   private readonly calls = new Map<string, HandsCall>()
-  /** Sessions sent through the account for one turn (*Use nanoMuse Cloud this time*), with what to put back. */
+  /** Sessions sent through the account for one turn (*Use Halo Cloud this time*), with what to put back. */
   private readonly cloudOnce = new Map<string, CloudOnce>()
   /** The scoped context with the session API, once it is up. */
   private sessionCtx: Context | undefined
@@ -956,9 +956,9 @@ export default class NanomuseCloud extends Service {
     // a retired key, a relay that did not answer — as a card in the chat, not the wire's text,
     // and not retried as if they were rate limits.
     // The same hook is the one place that keeps a switched-off Cloud from spending (Settings ›
-    // Models › *Use nanoMuse Cloud models*): a side call of the harness (a chat's title, a
+    // Models › *Use Halo Cloud models*): a side call of the harness (a chat's title, a
     // compaction) is sent to the chat slot's own model instead, a turn is refused with a card,
-    // and only a session under *Use nanoMuse Cloud this time* (`cloudOnce`) goes through.
+    // and only a session under *Use Halo Cloud this time* (`cloudOnce`) goes through.
     const cloud = this
     this.ctx.inject(['llm'], (ctx) => {
       ctx.on('llm/stream', function (options, next) {
@@ -1082,7 +1082,7 @@ export default class NanomuseCloud extends Service {
   }
 
   /**
-   * Whether nanoMuse Cloud is one of the model sources: signed in and not switched off under
+   * Whether Halo Cloud is one of the model sources: signed in and not switched off under
    * Settings › Models. Every slot's order and list, the side calls and the studio read this one
    * answer; the sign-in itself (`signedIn`) is a different question, and stays.
    */
@@ -1091,7 +1091,7 @@ export default class NanomuseCloud extends Service {
   }
 
   /**
-   * Switch the account's models on or off as a source (the phones' *Use nanoMuse Cloud models*).
+   * Switch the account's models on or off as a source (the phones' *Use Halo Cloud models*).
    * Off while new chats answer through the account: the chat slot moves to the first own chat
    * model, when there is one; the hands' environment follows. With no own chat model the
    * switch is refused (`409 chat_on_cloud`, the same rule on every client): nothing else
@@ -1327,7 +1327,7 @@ export default class NanomuseCloud extends Service {
     if (this.cloudModels()) {
       const models = this.state.models ?? []
       const pick = pickHandsModel(models)
-      for (const m of models) if (modelFor(m).includes('gui')) out.push({ provider: PROVIDER_ID, providerLabel: 'nanoMuse Cloud', id: m.id, name: m.name || m.id, ...(pick && m.id === pick.id ? { recommended: true } : {}) })
+      for (const m of models) if (modelFor(m).includes('gui')) out.push({ provider: PROVIDER_ID, providerLabel: 'Halo Cloud', id: m.id, name: m.name || m.id, ...(pick && m.id === pick.id ? { recommended: true } : {}) })
       out.sort((a, b) => Number(Boolean(b.recommended)) - Number(Boolean(a.recommended)))
     }
     for (const [id, row] of Object.entries(this.state.providers ?? {})) {
@@ -1348,7 +1348,7 @@ export default class NanomuseCloud extends Service {
     if (this.cloudModels()) {
       const models = this.state.models ?? []
       const pick = pickChatModel(models)
-      for (const m of models) if (modelFor(m).includes('chat')) out.push({ provider: PROVIDER_ID, providerLabel: 'nanoMuse Cloud', id: m.id, name: m.name || m.id, ...(pick && m.id === pick.id ? { recommended: true } : {}) })
+      for (const m of models) if (modelFor(m).includes('chat')) out.push({ provider: PROVIDER_ID, providerLabel: 'Halo Cloud', id: m.id, name: m.name || m.id, ...(pick && m.id === pick.id ? { recommended: true } : {}) })
       out.sort((a, b) => Number(Boolean(b.recommended)) - Number(Boolean(a.recommended)))
     }
     for (const [id, row] of Object.entries(this.state.providers ?? {})) {
@@ -1521,7 +1521,7 @@ export default class NanomuseCloud extends Service {
 
   /** What everything configured can do between them (C11, the rule). */
   capabilities(): Capability[] {
-    const sources = [{ id: PROVIDER_ID, label: 'nanoMuse Cloud', capabilities: this.cloudCapabilities() }, ...Object.entries(this.state.providers ?? {}).map(([id, row]) => ({ id, label: row.label, capabilities: row.capabilities }))]
+    const sources = [{ id: PROVIDER_ID, label: 'Halo Cloud', capabilities: this.cloudCapabilities() }, ...Object.entries(this.state.providers ?? {}).map(([id, row]) => ({ id, label: row.label, capabilities: row.capabilities }))]
     const set = capabilitiesOf(sources)
     return CAPABILITIES.filter((c) => set.has(c))
   }
@@ -1966,10 +1966,10 @@ export default class NanomuseCloud extends Service {
    * slot (`agentDefaultModel`) is the default for new ones; but the main chat is the one
    * conversation the Chat tab always shows and is never new, so on 0.1.41 the Models page could
    * not move it off the provider it started on: a person who saved a key of their own saw their
-   * side chats answer through it while the main chat kept nanoMuse Cloud under the face. The
+   * side chats answer through it while the main chat kept Halo Cloud under the face. The
    * main chat's own selection now moves with the slot (the same `selectModel` the chat's own
    * picker makes); side chats are left as they are; nothing is written when the session already
-   * says so. A main chat under *Use nanoMuse Cloud this time* finishes that turn on the account
+   * says so. A main chat under *Use Halo Cloud this time* finishes that turn on the account
    * and comes back to the pick. True when the session was moved (or will be after the turn).
    */
   async mainChatFollows(provider: string, model: string): Promise<boolean> {
@@ -2005,7 +2005,7 @@ export default class NanomuseCloud extends Service {
 
   /** The chat slot as the Models page shows it: the provider's label next to the id. */
   private labelOf(provider: string): string {
-    if (provider === PROVIDER_ID) return 'nanoMuse Cloud'
+    if (provider === PROVIDER_ID) return 'Halo Cloud'
     return this.state.providers?.[provider]?.label ?? provider
   }
 
@@ -2041,14 +2041,14 @@ export default class NanomuseCloud extends Service {
   }
 
   /**
-   * *Use nanoMuse Cloud this time* under a failed turn (contract section 4): the session's
+   * *Use Halo Cloud this time* under a failed turn (contract section 4): the session's
    * next request goes through the account's recommended chat model, and the selection it had
    * is put back when that turn ends; the chat slot (the default for new chats) is left as it
    * was, whatever dsh saved along the way. The browser half then sends the words again.
    */
   async retryOnCloud(sessionId: string): Promise<{ provider: string; model: string }> {
     const token = await this.token()
-    if (!token || !this.state.account) throw new RelayError(401, 'signed_out', 'Sign in to use nanoMuse Cloud')
+    if (!token || !this.state.account) throw new RelayError(401, 'signed_out', 'Sign in to use Halo Cloud')
     const pick = pickChatModel(this.state.models ?? [])
     if (!pick) throw new RelayError(409, 'no_chat_model', 'The account lists no chat model')
     const ctx = this.sessionCtx
@@ -2066,7 +2066,7 @@ export default class NanomuseCloud extends Service {
     return { provider: PROVIDER_ID, model: pick.id }
   }
 
-  /** The turn after *Use nanoMuse Cloud this time* ended: the session goes back to its own model, the slot stays. */
+  /** The turn after *Use Halo Cloud this time* ended: the session goes back to its own model, the slot stays. */
   private async cloudOnceDone(sessionId: string): Promise<void> {
     const before = this.cloudOnce.get(sessionId)
     if (!before) return
@@ -2251,7 +2251,7 @@ export default class NanomuseCloud extends Service {
     if (!this.cloudModels()) return []
     const models = (this.state.models ?? []).filter((m) => m.kind === 'image')
     const pick = this.imageModel()
-    return models.map((m) => ({ provider: PROVIDER_ID, providerLabel: 'nanoMuse Cloud', id: m.id, name: m.name || m.id, ...(m.id === pick ? { recommended: true } : {}) })).sort((a, b) => Number(Boolean(b.recommended)) - Number(Boolean(a.recommended)))
+    return models.map((m) => ({ provider: PROVIDER_ID, providerLabel: 'Halo Cloud', id: m.id, name: m.name || m.id, ...(m.id === pick ? { recommended: true } : {}) })).sort((a, b) => Number(Boolean(b.recommended)) - Number(Boolean(a.recommended)))
   }
 
   /** The image models the pictures may be drawn with: the account's, then each own row's (0.1.41). */
@@ -2271,13 +2271,13 @@ export default class NanomuseCloud extends Service {
    * exists; else the chat provider's `defaults.image` when new chats answer through an own row
    * with pictures; else the account while signed in and it lists an image model; else the first
    * own row with image models. `cloud: true` asks for the account whatever the order says
-   * (*Use nanoMuse Cloud this time*). Nothing when no source has one.
+   * (*Use Halo Cloud this time*). Nothing when no source has one.
    */
   async imageEndpoint(opts: { cloud?: boolean; auto?: boolean } = {}): Promise<ImageEndpoint | undefined> {
     const cloud = async (model = this.imageModel()): Promise<ImageEndpoint | undefined> => {
       const token = (opts.cloud ? this.signedInCache && this.state.account : this.cloudModels()) ? await this.token() : undefined
       if (!token || !model) return undefined
-      return { shape: 'cloud', baseURL: this.relay.openaiBase, apiKey: token, model, label: 'nanoMuse Cloud', instanceId: PROVIDER_ID }
+      return { shape: 'cloud', baseURL: this.relay.openaiBase, apiKey: token, model, label: 'Halo Cloud', instanceId: PROVIDER_ID }
     }
     if (opts.cloud) return cloud()
     const media = this.state.media ?? {}
@@ -2357,7 +2357,7 @@ export default class NanomuseCloud extends Service {
     if (this.cloudModels()) {
       const cloud = this.cloudVideoModels()
       const pick = (cloud.find((m) => m.recommended) ?? cloud[0])?.id
-      for (const m of cloud) out.push({ provider: PROVIDER_ID, providerLabel: 'nanoMuse Cloud', id: m.id, name: m.name || m.id, ...(m.id === pick ? { recommended: true } : {}) })
+      for (const m of cloud) out.push({ provider: PROVIDER_ID, providerLabel: 'Halo Cloud', id: m.id, name: m.name || m.id, ...(m.id === pick ? { recommended: true } : {}) })
       out.sort((a, b) => Number(Boolean(b.recommended)) - Number(Boolean(a.recommended)))
     }
     for (const own of await this.dashScopeProviders()) {
@@ -2395,7 +2395,7 @@ export default class NanomuseCloud extends Service {
     const token = await this.token()
     if (!token) throw new RelayError(401, 'signed_out', 'Sign in to draw a face')
     const estimate = await this.relay.estimate(token, STUDIO_PICTURES, clips)
-    return { ...estimate, source: 'cloud', label: 'nanoMuse Cloud' }
+    return { ...estimate, source: 'cloud', label: 'Halo Cloud' }
   }
 
   // ---- Settings → Media: the video model and the face's clips (desk-b) -------------------
@@ -2452,7 +2452,7 @@ export default class NanomuseCloud extends Service {
     const cloud = (wanted?: string): VideoEndpoint | undefined => {
       if (!token || !cloudModels.length) return undefined
       const model = wanted && cloudModels.some((m) => m.id === wanted) ? wanted : (cloudModels.find((m) => m.recommended) ?? cloudModels[0])?.id
-      return model ? { host: this.relay.origin, apiKey: token, model, label: 'nanoMuse Cloud', instanceId: PROVIDER_ID } : undefined
+      return model ? { host: this.relay.origin, apiKey: token, model, label: 'Halo Cloud', instanceId: PROVIDER_ID } : undefined
     }
     if (opts.cloud) return cloud(media.videoProvider === PROVIDER_ID ? media.videoModel : undefined)
     const rows = await this.dashScopeProviders()
@@ -2630,7 +2630,7 @@ export default class NanomuseCloud extends Service {
   /**
    * One candidate, drawn from the words; PNG bytes as the model gave them. The image slot's
    * source draws it: the account through the relay, an own row through its own API
-   * (`images.ts`). `viaCloud` is *Use nanoMuse Cloud this time*: the account for this one
+   * (`images.ts`). `viaCloud` is *Use Halo Cloud this time*: the account for this one
    * picture, the slot untouched.
    */
   async studioDraw(prompt: string, viaCloud = false): Promise<Buffer> {
@@ -3559,7 +3559,7 @@ export default class NanomuseCloud extends Service {
       if (req.method === 'POST' && route === '/retry-cloud') {
         const body = await json(req)
         const sessionId = String(body.sessionId ?? '')
-        if (!sessionId) return send(res, 400, { error: { code: 'bad_request', message: 'sessionId is the chat to send through nanoMuse Cloud' } })
+        if (!sessionId) return send(res, 400, { error: { code: 'bad_request', message: 'sessionId is the chat to send through Halo Cloud' } })
         return send(res, 200, await this.retryOnCloud(sessionId))
       }
       // Own keys and the ChatGPT sign-in (C11): the catalogue and the rows, a key saved or removed, the pickers' options.
@@ -3628,7 +3628,7 @@ export default class NanomuseCloud extends Service {
         const body = await json(req)
         const viaCloud = body.cloud === true
         if (!this.faceId()) return send(res, 409, { error: { code: 'no_face', message: 'No drawn face to animate' } })
-        if (!(await this.videoEndpoint({ cloud: viaCloud }))) return send(res, 409, { error: { code: viaCloud ? 'signed_out' : 'no_video_model', message: viaCloud ? 'Sign in to draw the clips with nanoMuse Cloud' : 'No video model to draw clips with' } })
+        if (!(await this.videoEndpoint({ cloud: viaCloud }))) return send(res, 409, { error: { code: viaCloud ? 'signed_out' : 'no_video_model', message: viaCloud ? 'Sign in to draw the clips with Halo Cloud' : 'No video model to draw clips with' } })
         const started = await this.motion.animateAll(body.force === true, viaCloud)
         return send(res, 200, { started, motion: this.motion.view() })
       }
@@ -3700,7 +3700,7 @@ export default class NanomuseCloud extends Service {
 export function providerRowFor(openaiBase: string, models: RelayModel[]): Record<string, unknown> {
   const chat = models.filter((m) => modelFor(m).includes('chat'))
   return {
-    displayName: 'nanoMuse Cloud',
+    displayName: 'Halo Cloud',
     api: 'openai-completions',
     baseURL: openaiBase,
     apiKeyEnv: TOKEN_REF,

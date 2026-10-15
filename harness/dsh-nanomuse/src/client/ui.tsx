@@ -92,7 +92,7 @@ export function Sheet({ title, onClose, closeLabel, children, footer, wide, head
 }
 
 /**
- * The small sidebar-toggle at a room's top left, as Muse's rooms have it: it
+ * The small sidebar-toggle at a room's top left, as Halo's rooms have it: it
  * opens the chat beside the room (the split) and closes it again. Hidden
  * while the room is already beside the chat.
  */

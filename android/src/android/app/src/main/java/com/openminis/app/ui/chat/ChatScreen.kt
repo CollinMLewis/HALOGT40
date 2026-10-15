@@ -1079,7 +1079,7 @@ fun ChatScreen(
         // [T-android-overlay-hide-camera] Suppress the floating bg-overlay
         // BEFORE handing off to the system camera. The camera Activity
         // takes foreground, which by #451's rule would otherwise satisfy
-        // "nanoMuse backgrounded → show overlay" and the capsule would draw
+        // "Halo backgrounded → show overlay" and the capsule would draw
         // on top of the viewfinder. Cleared in the ActivityResult callback.
         com.openminis.app.service.SessionActivityTracker.setCameraSuppressActive(true)
         runCatching { cameraLauncher.launch(intent) }
@@ -2623,7 +2623,7 @@ fun ChatScreen(
             ) {
             TopAppBar(
                 title = {
-                    // iOS-style centered layout: "nanoMuse" + group row + provider·model row
+                    // iOS-style centered layout: "Halo" + group row + provider·model row
                     Box(
                         modifier = Modifier.fillMaxWidth(),
                         contentAlignment = Alignment.Center,
@@ -4109,7 +4109,7 @@ fun ChatScreen(
                                 viewModel.resume()
                                 // T282: same dual-scroll trick as the regular
                                 // send paths (T281). Resume kicks off a fresh
-                                // stream, so the "nanoMuse is thinking" indicator
+                                // stream, so the "Halo is thinking" indicator
                                 // mounts a frame or two later — pin once now,
                                 // then again after 100ms so the indicator
                                 // doesn't land below the fold.
@@ -5859,7 +5859,7 @@ fun ChatScreen(
                     // on its own row (upstream layout) or between the buttons
                     // (the pill — see nmPill above).
                     val nmTextField: @Composable (Modifier) -> Unit = { nmFieldModifier ->
-                    // Text field (iOS: placeholder "Message nanoMuse", no border)
+                    // Text field (iOS: placeholder "Message Halo", no border)
                     run {
                         val interactionSource = remember { MutableInteractionSource() }
                         // [T-android-composer-placeholder-rotation] Which entry

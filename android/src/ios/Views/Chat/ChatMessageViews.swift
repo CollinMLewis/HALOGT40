@@ -553,7 +553,7 @@ struct ChatMessageRow: View {
                     NanoMuseProviderReachCard(reach: reach, onRetry: onRetry)
                 } else {
                     inlineError(error)
-                    NanoMuseCloudOnceRow(onRetry: onRetry) // nanoMuse: "Use nanoMuse Cloud this time" after a key of one's own failed
+                    NanoMuseCloudOnceRow(onRetry: onRetry) // nanoMuse: "Use Halo Cloud this time" after a key of one's own failed
                 }
             }
 

@@ -1,7 +1,7 @@
 """``coding_agents``: the user's Cursor / Codex / Claude Code sessions, here or on another
 computer of theirs, and a way to send a message into one.
 
-The Muse uses it when the person asks what their coding agent is doing ("is Cursor done
+The Halo uses it when the person asks what their coding agent is doing ("is Cursor done
 with the refactor?"), wants the gist of a session, or wants to tell the agent something
 from wherever they are ("tell Codex to also add tests"). Reading is safe; sending a message
 starts work on that computer, so it is moderate risk and shows up as an approval when the

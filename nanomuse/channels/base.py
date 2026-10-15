@@ -1,6 +1,6 @@
 """What every chat channel looks like from the inside.
 
-A *channel* puts your nanoMuse inside a chat app you already use — Feishu, DingTalk, WeCom,
+A *channel* puts your Halo inside a chat app you already use — Feishu, DingTalk, WeCom,
 Telegram. The vendor's long connection (or long polling) brings messages in; nothing here
 needs a public URL. A channel knows how to connect, how to turn a vendor event into an
 :class:`InboundMessage`, and how to send text and files back. Everything else — who may talk
@@ -177,7 +177,7 @@ class Channel:
             await self.send(chat_id, text)
 
     async def typing(self, chat_id: str, on: bool) -> None:
-        """Show that the Muse is working on it (a typing indicator, a reaction). Optional."""
+        """Show that the Halo is working on it (a typing indicator, a reaction). Optional."""
 
     async def ask(self, chat_id: str, approval_id: str, text: str) -> None:
         """An approval the run is waiting for. ``text`` already explains the reply words

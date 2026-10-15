@@ -1,4 +1,4 @@
-"""nanoMuse app server: the always-on agent behind the mobile-first web app.
+"""Halo app server: the always-on agent behind the mobile-first web app.
 
     nanomuse serve                     # http://127.0.0.1:8787
     nanomuse serve --host 0.0.0.0      # reachable from your phone on the same Wi-Fi
@@ -47,7 +47,7 @@ def lan_ip() -> str | None:
 
 
 def port_taken(host: str, port: int, timeout: float = 0.5) -> str | None:
-    """What already answers on ``host:port``, if anything: ``"nanoMuse <version>"`` when it
+    """What already answers on ``host:port``, if anything: ``"Halo <version>"`` when it
     is one of ours (its ``/api/health`` says so), ``"another program"`` otherwise, ``None``
     when nothing listens there. A connect, not a bind: a bind would mistake the previous
     run's closing connections for a listener."""
@@ -99,7 +99,7 @@ def serve(
         # announce itself as ready, link included, and only then die on uvicorn's bind error
         advice = (
             "That one keeps running: open it in the browser, or stop it before starting another."
-            if taken.startswith("nanoMuse")
+            if taken.startswith("Halo")
             else "Stop it, or choose another port with --port."
         )
         print(
@@ -189,7 +189,7 @@ def _print_banner(url: str, service: MuseService, print_qr: bool) -> None:
     console = Console()
     name = (service.profile.name or "").strip()
     # "nanoMuse · Lumi is ready."; before the agent has a name of its own, "nanoMuse is ready."
-    who = f" · [bold]{name}[/bold]" if name and name != "nanoMuse" else ""
+    who = f" · [bold]{name}[/bold]" if name and name != "Halo" else ""
     console.print(f"[bold magenta]nanoMuse[/bold magenta]{who} is ready.")
     if not STATIC_DIR.is_dir():
         console.print(
@@ -211,5 +211,5 @@ def _print_banner(url: str, service: MuseService, print_qr: bool) -> None:
         except Exception:  # noqa: BLE001  pragma: no cover
             pass
     console.print(
-        "[dim]Press Ctrl+C to stop. Your nanoMuse keeps working in the background while it runs.[/dim]"
+        "[dim]Press Ctrl+C to stop. Your Halo keeps working in the background while it runs.[/dim]"
     )

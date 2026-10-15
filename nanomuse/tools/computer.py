@@ -13,7 +13,7 @@ field, as the screenshot shows them); the window in front is the *target* of a s
 approval, so "always allow in Terminal" never covers the bank's site in a browser.
 
 Applications are asked for one by one: the first action in an application in a conversation
-asks "Let <Muse> use <App>?" (once, this conversation, always — a ``computer_app:<id>``
+asks "Let <Halo> use <App>?" (once, this conversation, always — a ``computer_app:<id>``
 grant the Permissions page lists). On macOS the hands can work in one application's window
 (``[hands] mode``, :mod:`nanomuse.computer.mac_window`): ``computer_target`` names it, or
 ``app`` on any ``computer_act`` call; the screenshot the model sees is then that window and
@@ -409,7 +409,7 @@ class ComputerAct(BaseTool):
 
     async def _app_allowed(self, opening: str = "") -> ToolResult | None:
         """The per-app permission: the first action in an application asks the user
-        ("Let <Muse> use <App>?"). None when allowed, the refusal otherwise."""
+        ("Let <Halo> use <App>?"). None when allowed, the refusal otherwise."""
         if self.app_gate is None:
             return None
         if opening:

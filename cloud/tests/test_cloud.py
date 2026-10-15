@@ -1591,12 +1591,14 @@ def test_code_mail_has_text_and_html_in_both_languages():
     from nanomuse_cloud.senders import compose_code_mail
 
     msg = compose_code_mail("no-reply@mail.nanomuse.cn", "someone@example.com", "123456", 10)
-    assert msg["From"] == "nanoMuse <no-reply@mail.nanomuse.cn>" and msg["To"] == "someone@example.com"
+    assert msg["From"] == "Halo <no-reply@mail.nanomuse.cn>" and msg["To"] == "someone@example.com"
     assert "123456" in msg["Subject"]
     parts = {p.get_content_type(): p.get_content() for p in msg.iter_parts()}
     assert set(parts) == {"text/plain", "text/html"}
-    assert "验证码是 123456" in parts["text/plain"] and "Your nanoMuse code is 123456" in parts["text/plain"]
+    assert "验证码是 123456" in parts["text/plain"] and "Your Halo code is 123456" in parts["text/plain"]
     assert "1 2 3 4 5 6" in parts["text/html"] and "10 分钟" in parts["text/html"] and "10 minutes" in parts["text/html"]
+    assert "github.com/CollinMLewis/HALOGT40" in parts["text/plain"]
+    assert "github.com/CollinMLewis/HALOGT40" in parts["text/html"]
     assert "<script" not in parts["text/html"]
 
 

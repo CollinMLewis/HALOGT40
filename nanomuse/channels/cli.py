@@ -2,7 +2,7 @@
 
     nanomuse channels status            what is on, connected, waiting
     nanomuse channels pending           pairing codes people were shown
-    nanomuse channels approve <code>    let that person talk to the Muse
+    nanomuse channels approve <code>    let that person talk to the Halo
     nanomuse channels deny <code>
     nanomuse channels login feishu      create the Feishu bot from a QR code
     nanomuse channels test <name>       send a test message (or check the credentials)
@@ -222,7 +222,7 @@ def pending(config: ConfigOpt = None) -> None:
 
 @channels_app.command("approve")
 def approve(code: str, config: ConfigOpt = None) -> None:
-    """Let the person who got this code talk to the Muse."""
+    """Let the person who got this code talk to the Halo."""
     settings = _settings(config)
     code = code.strip().upper()
     try:
@@ -290,7 +290,7 @@ def login(
         console.print(url)
 
     try:
-        result = feishu.wait_for_login(domain, settings.agent.name or "nanoMuse", show)
+        result = feishu.wait_for_login(domain, settings.agent.name or "Halo", show)
     except Exception as exc:  # noqa: BLE001
         _fail(exc)
         return

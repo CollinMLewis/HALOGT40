@@ -3,7 +3,7 @@
 Credentials are never in the model's context: the connector's configuration
 holds ``{{vault:...}}`` placeholders that are resolved from the encrypted vault
 at execution time. Incoming mail is scrubbed of one-time passcodes and
-password-reset links before the model reads it (as Muse's email connector does).
+password-reset links before the model reads it (as Halo's email connector does).
 """
 
 from __future__ import annotations

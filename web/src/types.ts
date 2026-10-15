@@ -119,7 +119,7 @@ export interface NoticeEvent extends BaseEvent {
   code?: string;
   /** the raw exception, for bug reports */
   detail?: string;
-  /** the failed turn ran on *Use nanoMuse Cloud this time* already: the model id */
+  /** the failed turn ran on *Use Halo Cloud this time* already: the model id */
   model_used?: string;
   /** values for the {placeholders} in `text` */
   vars?: Record<string, string | number>;
@@ -352,7 +352,7 @@ export interface CloudAccount {
   is_model: boolean;
   /** this runtime insists on an account (self-hosters may turn it off) */
   required?: boolean;
-  /** the account's models as a source (*Use nanoMuse Cloud models*); false leaves them out of the automatic order and the listings */
+  /** the account's models as a source (*Use Halo Cloud models*); false leaves them out of the automatic order and the listings */
   models?: boolean;
   has_password?: boolean;
   /** on the operator's list: no spend limit */
@@ -463,7 +463,7 @@ export interface CloudMe {
   /** Relay 0.4/0.5: the account's invite code and what came of it (`earned_cny` since 0.5). */
   invite?: { code: string; url: string; invites: number; bonus_cny: number; invitee_bonus_cny?: number; earned_cny?: number; friends: Array<{ hint: string; joined_at: number }> };
   /**
-   * Data controls: whether "Help improve nanoMuse's AI models" is on for this account, how many
+   * Data controls: whether "Help improve Halo's AI models" is on for this account, how many
    * turns the relay keeps, what the relay's default for new accounts is (0.9), what a kept turn
    * holds and where its privacy policy is.
    */
@@ -954,7 +954,7 @@ export interface ProviderPreset {
   /** the fallback catalogue; the live list comes from /api/llm/models */
   models?: string[];
   no_key?: boolean;
-  /** the nanoMuse Cloud account as the provider: the account key is the key, saved through /api/cloud/use-as-model */
+  /** the Halo Cloud account as the provider: the account key is the key, saved through /api/cloud/use-as-model */
   cloud?: boolean;
   /** a key may be left empty (a gateway or local server without one) */
   key_optional?: boolean;
@@ -964,7 +964,7 @@ export interface ProviderPreset {
   key_hint?: string;
   /** the hands model the preset suggests beside its chat model (contract C4): one that sees */
   gui_model?: string;
-  /** the account's hands models, recommended first (the nanoMuse Cloud preset) */
+  /** the account's hands models, recommended first (the Halo Cloud preset) */
   gui_models?: string[];
   /** "cn": the vendor only signs up accounts from mainland China (contract C5) */
   region?: string;

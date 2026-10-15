@@ -18,7 +18,7 @@ from typing import Any
 from nanomuse.bridge.tokens import BRIDGE_TOKEN_ENV, BRIDGE_URL_ENV
 
 NOT_HERE = (
-    "nanoMuse's bridge is not here: this program works inside a command the agent runs "
+    "Halo's bridge is not here: this program works inside a command the agent runs "
     "from `nanomuse serve` (the app), where the server sets "
     f"{BRIDGE_URL_ENV} and {BRIDGE_TOKEN_ENV} for it."
 )

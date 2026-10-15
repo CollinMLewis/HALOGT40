@@ -125,6 +125,10 @@ def test_the_code_mail_states_the_lifetime_in_whole_minutes_like_the_sms(monkeyp
     mail.send(parse("dev-a@example.com"), "482913")
     body = sent[-1].get_body(("plain",)).get_content()
     assert "482913" in body and "10 分钟内有效" in body and "expires in 10 minutes" in body
+    html = sent[-1].get_body(("html",)).get_content()
+    assert "Your Halo code is 482913" in body and "nanoMuse" not in body
+    assert "Halo" in html and "nanoMuse" not in html
+    assert "github.com/CollinMLewis/HALOGT40" in body and "github.com/CollinMLewis/HALOGT40" in html
     short = SmtpSender(aliyun_settings(sender="smtp", smtp_host="smtp.test", smtp_from="nanoMuse <no-reply@test>", code_ttl_s=30))
     short.send(parse("dev-a@example.com"), "482913")
     body = sent[-1].get_body(("plain",)).get_content()

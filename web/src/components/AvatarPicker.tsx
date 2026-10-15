@@ -14,7 +14,7 @@ export interface AvatarChoice {
 
 /** The looks a face can be drawn in — the phone's list, same ids; the runtime knows the words. */
 export const AVATAR_STYLES: { id: string; label: string }[] = [
-  { id: "muse", label: "3D toy (Muse)" },
+  { id: "muse", label: "3D toy (Halo)" },
   { id: "flat", label: "Flat" },
   { id: "clay", label: "3D clay" },
   { id: "watercolor", label: "Watercolour" },

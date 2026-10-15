@@ -110,7 +110,7 @@ export function ChannelsScreen() {
     <div className="flex h-full flex-col">
       <PageBar
         title={t("Chat apps")}
-        description={t("Talk to your Muse from the chat apps you already use. Nothing needs a public address: each app keeps a long connection open.")}
+        description={t("Talk to your Halo from the chat apps you already use. Nothing needs a public address: each app keeps a long connection open.")}
       />
       <div className="flex-1 overflow-y-auto pb-8">
         {view === null && loadError && <LoadError message={loadError} onRetry={() => void reload()} />}
@@ -139,7 +139,7 @@ export function ChannelsScreen() {
         )}
         {view?.channels.map((c) => <ChannelCard key={c.name} c={c} run={run} reload={reload} />)}
         {view && (
-          <MuseCaption>{t("Each chat is one conversation of your Muse; its replies stream back as they are written.")}</MuseCaption>
+          <MuseCaption>{t("Each chat is one conversation of your Halo; its replies stream back as they are written.")}</MuseCaption>
         )}
       </div>
     </div>
@@ -152,7 +152,7 @@ function PendingRow({ p, label, onApprove, onDeny }: { p: PendingPairing; label:
   return (
     <div className="flex items-center gap-3 px-4 py-3">
       <div className="min-w-0 flex-1">
-        <p className="truncate text-[15px]">{t("{name} wrote to the bot. Approve to let them talk to your Muse.", { name: `${who} · ${label}` })}</p>
+        <p className="truncate text-[15px]">{t("{name} wrote to the bot. Approve to let them talk to your Halo.", { name: `${who} · ${label}` })}</p>
         <p className="text-[13px] text-muted">{t("Code {code}", { code: p.code })}</p>
       </div>
       <button type="button" className={cx(primaryBtn, "px-3 py-2")} onClick={onApprove} aria-label={t("Approve")}>
@@ -299,7 +299,7 @@ function ChannelCard({
         )}
         {!c.sdk_available && (
           <div className="px-4 pb-3 text-[13px] leading-[18px] text-muted">
-            {t("Install on the computer running nanoMuse, then switch it on again:")}
+            {t("Install on the computer running Halo, then switch it on again:")}
             <code className="mt-1 block select-all rounded-lg bg-surface-2 px-2 py-1 text-[12.5px] text-fg">{c.install}</code>
           </div>
         )}
@@ -435,7 +435,7 @@ function ChannelCard({
       </MuseCard>
       {(open || c.enabled) && c.paired.length > 0 && (
         <MuseCaption>
-          {t("Chats with “deliver here” on also get what the Muse does on its own: check-ins, reminders, the results of background work, and the questions it needs answered.")}
+          {t("Chats with “deliver here” on also get what the Halo does on its own: check-ins, reminders, the results of background work, and the questions it needs answered.")}
         </MuseCaption>
       )}
     </>

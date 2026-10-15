@@ -2,7 +2,7 @@
 
 Stream mode is DingTalk's long connection: the SDK opens a socket to DingTalk and bot
 messages arrive on it, no public URL. Replies go out through the robot HTTP API with an
-access token (that is also what lets a "deliver here" chat receive something the Muse did on
+access token (that is also what lets a "deliver here" chat receive something the Halo did on
 its own). DingTalk messages cannot be edited, so a reply is sent once, when it is complete.
 
 Setup (console names, 2026): https://open-dev.dingtalk.com → *Create app* (企业内部应用) →

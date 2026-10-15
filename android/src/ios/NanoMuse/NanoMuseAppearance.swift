@@ -110,7 +110,7 @@ struct NanoMuseAppearanceView: View {
                     NanoMuseRowDivider()
                     NanoMuseToggleRow(title: AppLocalized("Show the model under the name"), isOn: $appearance.headerModel)
                 }
-                NanoMuseCaption(text: AppLocalized("How big the face is on the home header. Hidden keeps the name only.") + " " + AppLocalized("Muse shows only the name. Turn this on to see the model group and provider · model under it; tap them to switch. Off, the model is under ••• → Model and in Settings."))
+                NanoMuseCaption(text: AppLocalized("How big the face is on the home header. Hidden keeps the name only.") + " " + AppLocalized("Halo shows only the name. Turn this on to see the model group and provider · model under it; tap them to switch. Off, the model is under ••• → Model and in Settings."))
             }
 
             // The chat.
@@ -141,14 +141,14 @@ struct NanoMuseAppearanceView: View {
             // The shell.
             VStack(alignment: .leading, spacing: 0) {
                 NanoMuseCard {
-                    NanoMuseToggleRow(title: AppLocalized("Muse home"), isOn: $shellEnabled)
+                    NanoMuseToggleRow(title: AppLocalized("Halo home"), isOn: $shellEnabled)
                     NanoMuseRowDivider()
                     NanoMuseToggleRow(title: AppLocalized("Face and name in the chat header"), isOn: $museHeader)
                     NanoMuseRowDivider()
                     // Where the chat put its composer, for a report from a device without a Mac.
                     NanoMuseLinkRow(title: AppLocalized("Composer check")) { NanoMuseComposerCheckView() }
                 }
-                NanoMuseCaption(text: AppLocalized("Muse home is the chat with the feed, ideas, goals and library as tabs. Off, the app opens on the classic OpenMinis chat list. The second switch puts the face and the name in the title of side chats; off, they show the model."))
+                NanoMuseCaption(text: AppLocalized("Halo home is the chat with the feed, ideas, goals and library as tabs. Off, the app opens on the classic Halo chat list. The second switch puts the face and the name in the title of side chats; off, they show the model."))
             }
 
             // The welcome, once more.

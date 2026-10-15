@@ -41,10 +41,10 @@ import UIKit
 extension Notification.Name {
     /// A main conversation arrived from another device while this phone's main chat was still a
     /// draft; the object is the local session id the shell should show as the main chat.
-    static let nanoMuseMainChatAdopt = Notification.Name("nanoMuseMainChatAdopt")
+    static let nanoMuseMainChatAdopt = Notification.Name("HaloMainChatAdopt")
     /// C10: the signed-in account is not the one the tables were open for; the object is the
     /// new account's key. The lists re-read, the main chat re-resolves.
-    static let nanoMuseAccountSwitched = Notification.Name("nanoMuseAccountSwitched")
+    static let nanoMuseAccountSwitched = Notification.Name("HaloAccountSwitched")
 }
 
 @MainActor

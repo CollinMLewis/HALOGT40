@@ -13,7 +13,7 @@ import Combine
 /// Posted by "Avatar studio…" on the agent page (and the face's menu); the
 /// shell (or the root in the OpenMinis layout) presents the avatar studio.
 extension Notification.Name {
-    static let nanoMuseOpenAvatarStudio = Notification.Name("nanoMuse.openAvatarStudio")
+    static let nanoMuseOpenAvatarStudio = Notification.Name("Halo.openAvatarStudio")
 }
 
 // MARK: - Status line

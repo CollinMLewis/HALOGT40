@@ -4,7 +4,7 @@
  * `user/message` whose source is `nanomuse-sync` (see `sync.ts`), so the model reads it with
  * the rest of the conversation; the harness renders a message of that source as a collapsed
  * context row. This module dresses that row: it is hidden, and in its place stands a bubble —
- * the person's on the right, the Muse's on the left — with "From Pixel 8" under it. A turn
+ * the person's on the right, the Halo's on the left — with "From Pixel 8" under it. A turn
  * older than a prompt typed here before it arrived is shown before that prompt (the host
  * says which: `before`), so the thread reads in time order whatever order the log has.
  *

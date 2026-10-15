@@ -204,7 +204,7 @@ class MediaSettings(BaseModel):
 
 
 class AgentSettings(BaseModel):
-    name: str = "nanoMuse"
+    name: str = "Halo"
     max_steps: int = 30
     # Where the agent's files live. A relative path is relative to the current directory, which is
     # what a terminal user expects. When nothing is configured, Settings resolves it: a `workspace/`
@@ -545,7 +545,7 @@ class HandsSettings(BaseModel):
 
 
 class CloudSettings(BaseModel):
-    """nanoMuse Cloud: the relay the phone signs in to with a phone-number or e-mail code. The
+    """Halo Cloud: the relay the phone signs in to with a phone-number or e-mail code. The
     account key lives in the vault (``NANOMUSE_CLOUD_KEY``); ``base_url`` is the relay.
     Signed in, the relay can be the model provider and the hub is reachable."""
 

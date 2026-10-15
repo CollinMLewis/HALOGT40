@@ -75,8 +75,8 @@ enum NanoMuseComposerReport {
         let build = info["CFBundleVersion"] as? String ?? "?"
         let device = UIDevice.current
         let idiom = device.userInterfaceIdiom == .pad ? "pad" : "phone"
-        lines.append("nanoMuse \(version) (\(build)) · \(device.systemName) \(device.systemVersion) · \(device.model) · \(idiom)")
-        lines.append("Muse home: \(NanoMuseShellPrefs.shell ? "on" : "off") · outline: \(NanoMuseComposerWatch.outline ? "on" : "off")")
+        lines.append("Halo \(version) (\(build)) · \(device.systemName) \(device.systemVersion) · \(device.model) · \(idiom)")
+        lines.append("Halo home: \(NanoMuseShellPrefs.shell ? "on" : "off") · outline: \(NanoMuseComposerWatch.outline ? "on" : "off")")
 
         let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
         for scene in scenes {
@@ -143,7 +143,7 @@ enum NanoMuseComposerReport {
         // keyboard, and the column then stands on the keyboard, below the band.
         let bar = NanoMuseBottomBar.height
         if NanoMuseShellPrefs.shell, column.maxY > safeBottom - bar + 1 {
-            return "the column ends behind the Muse bottom bar (the last \(Int(bar)) pt above the safe bottom); hidden by it unless the keyboard is up"
+            return "the column ends behind the Halo bottom bar (the last \(Int(bar)) pt above the safe bottom); hidden by it unless the keyboard is up"
         }
         if column.width < 100 { return "the column is too narrow to show the pill" }
         return "the column is laid out inside the window, above the bottom bar's band; if nothing shows there, what is inside it is not drawing"

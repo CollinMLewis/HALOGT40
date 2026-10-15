@@ -607,7 +607,7 @@ class AvatarStudio:
     ) -> dict[str, Any]:
         """Open a session: the card with what it will cost, waiting for a tap.
 
-        ``style`` is one of :data:`STYLES` (the phone's list); anything else is Muse's.
+        ``style`` is one of :data:`STYLES` (the phone's list); anything else is Halo's.
         ``reference`` is the workspace path of a picture to draw the candidates from."""
         if style not in STYLES:
             style = DEFAULT_STYLE

@@ -3,7 +3,7 @@ import XCTest
 
 /// The words a person reads in the nanoMuse layer follow the project's voice: no dashes
 /// (`—`, `–`, `——`) in any of the nine languages, no exclamation marks, and the relay is
-/// "nanoMuse Cloud" in every language. Our keys are the ones the Swift files under
+/// "Halo Cloud" in every language. Our keys are the ones the Swift files under
 /// `NanoMuse/` reference; upstream OpenMinis keys are not ours to rewrite.
 ///
 /// Reads the sources next to this file (Mac only, as all of MinisTests): the catalogue is
@@ -91,7 +91,7 @@ final class NanoMuseCopyTests: XCTestCase {
         var offenders: [String] = []
         for key in cat.ours {
             for (lang, value) in cat.values[key] ?? [:] {
-                for translated in ["nanoMuse 云", "nanoMuse 雲", "nanoMuse クラウド", "nanoMuse 클라우드"] where value.contains(translated) {
+                for translated in ["Halo 云", "Halo 雲", "Halo クラウド", "Halo 클라우드"] where value.contains(translated) {
                     offenders.append("[\(lang)] \(value.prefix(80))")
                 }
             }

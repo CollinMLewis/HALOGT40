@@ -82,7 +82,7 @@ export function DevicesScreen() {
       <div className="@container flex-1 overflow-y-auto pb-8">
         {/* the header: what devices are for, and how many there are */}
         <div className="px-5 pb-4 pt-1">
-          <p className="text-[14px] leading-[20px] text-muted">{t("Every device signed in to your account is a Muse of its own, on the same conversations. Type @ and a device's name in the chat to hand it work; a computer lends its hands.")}</p>
+          <p className="text-[14px] leading-[20px] text-muted">{t("Every device signed in to your account is a Halo of its own, on the same conversations. Type @ and a device's name in the chat to hand it work; a computer lends its hands.")}</p>
           {hub && signedIn && total > 0 && (
             <p className="mt-1.5 text-[12.5px] font-medium uppercase tracking-wide text-muted">
               {total === 1 ? t("1 device") : t("{n} devices", { n: total })} · {t("{n} online", { n: online })}
@@ -391,8 +391,8 @@ function EmptyDevices({ hub, signedIn }: { hub: HubView | undefined; signedIn: b
               : !ready
                 ? hubStateLabel(hub?.state ?? "", t)
                 : hub?.account.hint
-                  ? t("Install nanoMuse on your phone, Mac or PC and sign in as {hint}; it appears here on its own.", { hint: hub.account.hint })
-                  : t("Install nanoMuse on your phone, Mac or PC and sign in with the same account; it appears here on its own.")}
+                  ? t("Install Halo on your phone, Mac or PC and sign in as {hint}; it appears here on its own.", { hint: hub.account.hint })
+                  : t("Install Halo on your phone, Mac or PC and sign in with the same account; it appears here on its own.")}
           </p>
         </div>
       </div>
@@ -409,7 +409,7 @@ function HandsCard({ hands, onChange }: { hands: HandsStatus; onChange: () => vo
   const { dispatch, toast, state } = useStore();
   const t = useT();
   const [busy, setBusy] = useState(false);
-  const museName = state.profile?.name ?? "nanoMuse";
+  const museName = state.profile?.name ?? "Halo";
 
   const set = async (body: { enabled?: boolean; backend?: string; mode?: string }) => {
     setBusy(true);
@@ -488,7 +488,7 @@ function HandsCard({ hands, onChange }: { hands: HandsStatus; onChange: () => vo
         )}
       </MuseCard>
       {hands.enabled && hands.device?.platform === "darwin" && (
-        <MuseCaption>{t("On a Mac, allow nanoMuse under System Settings → Privacy & Security → Accessibility and Screen Recording when macOS asks; without them clicks do nothing and the screenshot is black. The first action in each app asks you once (\"Let {name} use Safari?\") and the answer is kept under Permissions.", { name: museName })}</MuseCaption>
+        <MuseCaption>{t("On a Mac, allow Halo under System Settings → Privacy & Security → Accessibility and Screen Recording when macOS asks; without them clicks do nothing and the screenshot is black. The first action in each app asks you once (\"Let {name} use Safari?\") and the answer is kept under Permissions.", { name: museName })}</MuseCaption>
       )}
     </>
   );

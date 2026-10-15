@@ -81,7 +81,7 @@ export function ConnectionsScreen() {
   const { state } = useStore();
   const [data, setData] = useState<ConnectionsData | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const name = state.profile?.name ?? "nanoMuse";
+  const name = state.profile?.name ?? "Halo";
   const t = useT();
 
   const load = useCallback(async () => {
@@ -211,7 +211,7 @@ export function ModelCard({
     list: string[];
     image: string[];
     video: string[];
-    // nanoMuse Cloud, for a member: the menu and the other models under the Cloud key, grouped
+    // Halo Cloud, for a member: the menu and the other models under the Cloud key, grouped
     menu: string[];
     catalog: string[];
     imageCatalog: string[];
@@ -501,7 +501,7 @@ export function ModelCard({
   ).filter(Boolean);
   // the hands picker's one group: this provider's models that see, the catalogue's hands
   // default first (the relay's recommended one on nanoMuse Cloud), folded past eight
-  const handsProviderLabel = p?.cloud ? "nanoMuse Cloud" : ep ? endpointLabel(ep) : catalogueEntry ? providerName(catalogueEntry, locale) : hostOf(effectiveUrl) || preset;
+  const handsProviderLabel = p?.cloud ? "Halo Cloud" : ep ? endpointLabel(ep) : catalogueEntry ? providerName(catalogueEntry, locale) : hostOf(effectiveUrl) || preset;
   const handsPreset = p?.cloud ? (models.gui[0] ?? p.gui_model ?? "") : (catalogueEntry?.defaults.hands ?? p?.gui_model ?? "");
   // ... and one group per other endpoint of the list, which lends the hands its address and key (#294)
   const handsGroups: ModelGroup[] = [
@@ -520,7 +520,7 @@ export function ModelCard({
       title={t("Chat model")}
       summary={
         data.llm.cloud
-          ? `nanoMuse Cloud · ${data.llm.model || t("No model yet")}`
+          ? `Halo Cloud · ${data.llm.model || t("No model yet")}`
           : currentEndpoint
             ? `${data.llm.model || t("No model yet")} · ${endpointLabel(currentEndpoint)}`
             : `${data.llm.model || t("No model yet")}${data.llm.base_url ? ` · ${hostOf(data.llm.base_url)}` : ""}`
@@ -896,7 +896,7 @@ export function ModelCard({
       {!p?.cloud && !adding && data.llm.proxy !== undefined && (
         <Field
           label={t("Proxy (optional)")}
-          hint={t("Only this provider's requests go through it. nanoMuse Cloud never does.")}
+          hint={t("Only this provider's requests go through it. Halo Cloud never does.")}
         >
           <input
             className={inputCls}
@@ -1325,7 +1325,7 @@ export function MediaSlotCard({
   const own = endpoints.find((e) => endpointChoice(e.id) === choice) ?? null;
   const endpointUrl = choice === CLOUD_ID ? cloudBaseUrl : own ? own.base_url : choice === CUSTOM_ID ? baseUrl.trim() : (edition?.base_url ?? "");
   // the key the slot would use: one typed here, the one saved for this very provider, the
-  // chat model's on its own host, the account's on nanoMuse Cloud
+  // chat model's on its own host, the account's on Halo Cloud
   const keySaved = current === choice && current !== "" && (info.key_source === "vault" || info.key_source === "config");
   const needsKey = !!chosen?.needsKey && !key && !keySaved;
   const defaultModel = choice === CLOUD_ID ? (models.list[0] ?? "") : (entry?.defaults[slot] ?? "");
@@ -1366,7 +1366,7 @@ export function MediaSlotCard({
   }, [open, choice, endpointUrl, key]);
 
   const title = slot === "image" ? t("Making pictures") : t("Making clips");
-  const subtitle = slot === "image" ? t("Portraits of your Muse.") : t("Short clips of your Muse.");
+  const subtitle = slot === "image" ? t("Portraits of your Halo.") : t("Short clips of your Halo.");
   const value = slotValue(info, locale, CATALOGUE, endpoints);
   const sentence = unavailableLine(t, cap, region, locale);
   const status = !info.effective_provider
@@ -1462,7 +1462,7 @@ export function MediaSlotCard({
       {choice && (
         <StudioModelPick
           label={slot === "image" ? t("Picture model") : t("Clip model")}
-          provider={choice === CLOUD_ID ? "nanoMuse Cloud" : choice === CUSTOM_ID ? hostOf(baseUrl) || t("Other OpenAI-compatible endpoint") : (chosen?.label ?? choice)}
+          provider={choice === CLOUD_ID ? "Halo Cloud" : choice === CUSTOM_ID ? hostOf(baseUrl) || t("Other OpenAI-compatible endpoint") : (chosen?.label ?? choice)}
           value={model}
           options={models.list}
           more={models.more}
@@ -2307,7 +2307,7 @@ const CALENDAR_HINTS: Array<{ id: string; label: string; hint: string }> = [
   {
     id: "file",
     label: ".ics file",
-    hint: "A path on the machine where nanoMuse runs, for example ~/calendar.ics",
+    hint: "A path on the machine where Halo runs, for example ~/calendar.ics",
   },
 ];
 
@@ -2523,7 +2523,7 @@ export function CalendarCard({
                     .replace(/^_+|_+$/g, "") || "NAME",
               }) +
               " " +
-              t("nanoMuse fetches whatever address you put here, from this machine; only paste links you trust.")
+              t("Halo fetches whatever address you put here, from this machine; only paste links you trust.")
             }
           >
             <input
@@ -2887,7 +2887,7 @@ export function ContactsCard({
                     .replace(/^_+|_+$/g, "") || "NAME",
               }) +
               " " +
-              t("nanoMuse fetches whatever address you put here, from this machine; only paste links you trust.")
+              t("Halo fetches whatever address you put here, from this machine; only paste links you trust.")
             }
           >
             <input
@@ -3218,7 +3218,7 @@ function PhoneCard({
             <>
               <div className="text-muted">
                 {t(
-                  "Turn on the nanoMuse accessibility service; that is how it sees the screen and taps for you, only while a task runs, with a Stop button on screen.",
+                  "Turn on the Halo accessibility service; that is how it sees the screen and taps for you, only while a task runs, with a Stop button on screen.",
                 )}
               </div>
               <div className="flex flex-wrap gap-2 pt-0.5">
@@ -3769,7 +3769,7 @@ const OTHER_MODEL = "\u0000other";
 /**
  * A model from the list, or one typed by its id when `other` (the list's last entry opens
  * the field). The list is the picker of the Models contract (`ModelPicker`): one group
- * named after the provider with its catalogue default first, or on nanoMuse Cloud the menu
+ * named after the provider with its catalogue default first, or on Halo Cloud the menu
  * and the account's other models as two groups; each folds past eight rows, and a search
  * field appears once the rows pass eight in all.
  */
@@ -3788,7 +3788,7 @@ function StudioModelPick({
   provider: string;
   value: string;
   options: string[];
-  /** a second group — on nanoMuse Cloud, the other models under the Cloud key a member may use */
+  /** a second group — on Halo Cloud, the other models under the Cloud key a member may use */
   more?: string[];
   onChange: (v: string) => void;
   other?: boolean;

@@ -185,7 +185,7 @@ extension NanoMuseImageGen {
         }
     }
 
-    /// "Drawn by nanoMuse Cloud" / "Drawn by Bailian · qwen-image-3.0".
+    /// "Drawn by Halo Cloud" / "Drawn by Bailian · qwen-image-3.0".
     @MainActor
     static func providerLine() -> String {
         switch route() {

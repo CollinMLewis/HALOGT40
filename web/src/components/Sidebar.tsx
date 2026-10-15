@@ -15,7 +15,7 @@ function bugReportUrl(version: string): string {
   const bridge = desktopBridge();
   const where = bridge ? `Desktop app (${bridge.platform}, shell ${bridge.version})` : `Web app (${navigator.userAgent})`;
   const params = new URLSearchParams({ template: "bug_report.yml", version: version || "", os: where });
-  return `https://github.com/nano-muse/nanoMuse/issues/new?${params.toString()}`;
+  return `https://github.com/CollinMLewis/HALOGT40/issues/new?${params.toString()}`;
 }
 
 /**
@@ -35,7 +35,7 @@ export function Sidebar() {
   const menuRef = useRef<HTMLDivElement>(null);
   const developer = useDeveloperTools();
   const { profile, status } = state;
-  const name = profile?.name ?? "nanoMuse";
+  const name = profile?.name ?? "Halo";
 
   const pendingApprovals = state.pendingApprovals.length;
   const proposals = state.goals.filter((g) => g.proposal && g.status !== "cancelled").length;

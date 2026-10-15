@@ -22,7 +22,7 @@ describe("t", () => {
     setLocaleSetting("zh-CN");
     expect(getLocale()).toBe("zh-CN");
     expect(t("Feed")).toBe("动态");
-    expect(t("Hi, I'm {name}.", { name: "Muse" })).toBe("你好，我是 Muse。");
+    expect(t("Hi, I'm {name}.", { name: "Halo" })).toBe("你好，我是 Halo。");
     expect(t("{n} frames", { n: 3 })).toBe("3 帧");
   });
 

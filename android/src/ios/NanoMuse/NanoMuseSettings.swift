@@ -33,7 +33,7 @@ struct NanoMuseSettingsHomeView: View {
                 NanoMuseCard {
                     NanoMuseActionRow(title: AppLocalized("All settings"), action: onAllSettings)
                 }
-                NanoMuseCaption(text: AppLocalized("Providers, model groups, skills, appearance and the rest of the OpenMinis settings."))
+                NanoMuseCaption(text: AppLocalized("Providers, model groups, skills, appearance and the rest of the Halo settings."))
             }
         }
         .onAppear { updates.checkIfStale() }
@@ -175,7 +175,7 @@ struct NanoMuseSettingsHomeView: View {
 
     private var aboutCard: some View {
         NanoMuseCard {
-            NanoMuseLinkRow(title: AppLocalized("About nanoMuse")) { AboutView() }
+            NanoMuseLinkRow(title: AppLocalized("About Halo")) { AboutView() }
             NanoMuseRowDivider()
             NanoMuseActionRow(title: AppLocalized("Privacy Policy")) {
                 openURL(NanoMuseLinks.privacy)
@@ -218,7 +218,7 @@ struct NanoMuseSettingsHomeView: View {
 /// The project's public pages.
 enum NanoMuseLinks {
     /// The policy on the site (docs/privacy.md is its source), as Android's PRIVACY_URL.
-    static let privacy = URL(string: "https://nanomuse.cn/privacy/")!
+    static let privacy = URL(string: "https://github.com/CollinMLewis/HALOGT40/blob/main/docs/privacy.md")!
     /// The own-key guide on the site (docs/own-key.md), when the relay sent no address of its own (Android's OWN_KEY_DOCS).
     static let ownKeyDocs = "https://nanomuse.cn/own-key"
 
@@ -229,7 +229,7 @@ enum NanoMuseLinks {
         let info = Bundle.main.infoDictionary
         let version = info?["CFBundleShortVersionString"] as? String ?? "?"
         let build = info?["CFBundleVersion"] as? String ?? "?"
-        var components = URLComponents(string: "https://github.com/nano-muse/nanoMuse/issues/new")!
+        var components = URLComponents(string: "https://github.com/CollinMLewis/HALOGT40/issues/new")!
         components.queryItems = [
             URLQueryItem(name: "template", value: "bug_report.yml"),
             URLQueryItem(name: "labels", value: "bug,ios"),
@@ -237,7 +237,7 @@ enum NanoMuseLinks {
             URLQueryItem(name: "version", value: "\(version) (\(build))"),
             URLQueryItem(name: "os", value: "iOS \(UIDevice.current.systemVersion), \(UIDevice.current.model)"),
         ]
-        return components.url ?? URL(string: "https://github.com/nano-muse/nanoMuse/issues")!
+        return components.url ?? URL(string: "https://github.com/CollinMLewis/HALOGT40/issues")!
     }
 }
 

@@ -75,7 +75,7 @@ data class SoulMetadata(
         const val DISPLAY_EMOJI = "🐾"
 
         val DEFAULT = SoulMetadata(
-            name = "nanoMuse",
+            name = "Halo",
             // Default emoji is intentionally empty — UI uses the fixed
             // [displayEmoji] sparkle and [SoulMDParser.serialize] no longer
             // writes the `emoji:` line. The field is kept on the struct only
@@ -318,16 +318,16 @@ object SoulStore {
      * `SoulStore.defaultContent` byte-for-byte (74c0daf).
      */
     val DEFAULT_CONTENT: String = """---
-name: "nanoMuse"
+name: "Halo"
 style: ""
 lang: "auto"
 ---
 
-**Don't perform — help.** Skip the "Sure!" and "Happy to assist!" — just do the work.
+**Be warm and direct.** Use plain language, get to the point, and skip empty pleasantries.
 
-**Have a stance.** It's fine to disagree, prefer one thing over another, find some things interesting and others dull.
+**Be useful and honest.** Share a clear view when it helps, say when you are unsure, and correct mistakes without defensiveness.
 
-**Act first, ask second.** If you can look it up, look it up. Come back with answers, not questions.
+**Take initiative with care.** Handle safe, reversible work without needless questions. Before an action with lasting effects, explain what will happen and ask first.
 """
 
     /**
@@ -484,7 +484,7 @@ object SystemPromptBuilder {
         val file = SoulStore.load(context)
         val name = (file?.metadata?.name ?: SoulMetadata.DEFAULT.name)
             .trim()
-            .ifEmpty { "nanoMuse" }
+            .ifEmpty { "Halo" }
 
         val style = (file?.metadata?.style ?: "").trim()
 

@@ -16,7 +16,7 @@ import Foundation
 extension Notification.Name {
     /// `object` is the chat's session key (`nmSessionKey`); `userInfo["action"]` a
     /// `NanoMuseChatAction` raw value. AIChatView acts on it for its own chat.
-    static let nanoMuseChatAction = Notification.Name("nanoMuse.chatAction")
+    static let nanoMuseChatAction = Notification.Name("Halo.chatAction")
 }
 
 /// What the Muse header's ••• menu can ask of the chat under it (the entries
@@ -62,7 +62,7 @@ extension AIChatViewModel {
         NanoMuseFirstConversation.shared.afterTurn(session: key, assistantText: reply, vm: self)
         NanoMuseSessionAddenda.onTurnFinished(session: key)
         NanoMuseSync.shared.turnFinished(session: key)
-        // "Use nanoMuse Cloud this time" covered this one turn; where the turn ran decides whether the next failure offers it
+        // "Use Halo Cloud this time" covered this one turn; where the turn ran decides whether the next failure offers it
         NanoMuseCloudOnce.turnEnded(onCloud: resolveCurrentEntry()?.providerInstanceId == NanoMuseCloud.instance?.id)
     }
 

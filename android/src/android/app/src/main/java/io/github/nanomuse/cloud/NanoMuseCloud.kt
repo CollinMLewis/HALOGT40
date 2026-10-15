@@ -112,7 +112,7 @@ object NanoMuseCloud {
     private const val MODELS_FRESH_MS = 60 * 60 * 1000L
 
     /** Where the privacy policy is when the relay did not name one. */
-    const val PRIVACY_URL = "https://nanomuse.cn/privacy/"
+    const val PRIVACY_URL = "https://github.com/CollinMLewis/HALOGT40/blob/main/docs/privacy.md"
 
     /**
      * A refusal of the relay's: its stable [code], its own sentence, the HTTP [status]; relay

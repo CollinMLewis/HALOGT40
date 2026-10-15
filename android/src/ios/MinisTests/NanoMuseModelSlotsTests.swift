@@ -10,7 +10,7 @@ final class NanoMuseModelSlotsTests: XCTestCase {
 
     private var cloud: NanoMuseSlotProvider {
         NanoMuseSlotProvider(
-            id: cloudId, label: "nanoMuse Cloud", isCloud: true,
+            id: cloudId, label: "Halo Cloud", isCloud: true,
             capabilities: ["chat", "vision", "image", "video"],
             defaults: ["chat": "deepseek-v4.1-flash", "image": "qwen-image-3.0", "video": "wan2.2-i2v-flash"],
             models: [.chat: ["deepseek-v4.1-flash", "qwen3.8-27b"], .hands: ["qwen3.8-27b"], .image: ["qwen-image-3.0"], .video: ["wan2.2-i2v-flash"]]

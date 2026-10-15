@@ -31,7 +31,7 @@ export function makeFeedPanel(t: Translate) {
     const refresh = () => { setError(undefined); roomsCall('feed/refresh', {}).catch(fail) }
     const discuss = (post: FeedPost) => {
       setError(undefined)
-      // the chat opens beside the feed, the post's words already in it (Muse's 讨论)
+      // the chat opens beside the feed, the post's words already in it (Halo's 讨论)
       roomsCall<{ sessionId: string }>('feed/discuss', { id: post.id }).then(({ sessionId }) => { nav.openSession(sessionId); nav.split(FEED_PANEL) }).catch(fail)
     }
 

@@ -218,7 +218,7 @@ struct CollectionViewMessageListV3: UIViewControllerRepresentable {
 
 // MARK: - V3 Bridged Cell Views (no GeometryReader)
 
-/// Header: "✦ nanoMuse" label at the top of each assistant turn.
+/// Header: "✦ Halo" label at the top of each assistant turn.
 /// Name comes from SOUL.md (user-editable in Soul Settings).
 ///
 /// [T-ios-assistant-header-open-soul] Tapping the row opens Soul Settings.
@@ -257,7 +257,7 @@ private struct BridgedAssistantHeaderV3: View {
                     endPoint: .bottomTrailing
                 )
             )
-            Text(soulMeta.name.isEmpty ? "nanoMuse" : soulMeta.name)
+            Text(soulMeta.name.isEmpty ? "Halo" : soulMeta.name)
                 .font(.body.weight(.semibold))
                 .foregroundStyle(ChatColors.primaryText)
         }
@@ -2783,7 +2783,7 @@ extension CollectionViewMessageListV3 {
 
                     switch item {
                     case .assistantHeader:
-                        // Header is always a fixed "sparkles nanoMuse" label row (measured: 28pt)
+                        // Header is always a fixed "sparkles Halo" label row (measured: 28pt)
                         layout.setEstimatedHeight(28, at: i)
 
                     case .assistantFooter:
@@ -3211,7 +3211,7 @@ extension CollectionViewMessageListV3 {
                 // which does not change when a block is appended, so the diff is
                 // empty for it and UIKit never re-configures the cell (same
                 // mechanism as gap 1 in cd50865c). The footer therefore keeps the
-                // TALLER height it measured while "nanoMuse is thinking…" was
+                // TALLER height it measured while "Halo is thinking…" was
                 // showing, and once the first tool block lands the indicator
                 // disappears but the reserved space does not — the blank strip
                 // above the tool row that the user reported. It healed only on

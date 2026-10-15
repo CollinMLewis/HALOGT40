@@ -236,7 +236,7 @@ html[data-nm-platform='darwin']:not([data-nm-fullscreen]) .nm-col-top { height: 
 .nm-chat-row:hover .nm-chat-title { padding-right: 22px; }
 .nm-chat-edit { flex: 1; min-width: 0; height: 30px; margin: 2px 4px; padding: 0 8px; border: 1px solid var(--nm-blue); border-radius: 7px; background: var(--nm-field); color: var(--dsw-alias-label-primary); font: inherit; font-size: 14px; outline: none; }
 /* a turn of the conversation written on another device of the account (C8): the person's bubble on the
-   right like the harness's own, the Muse's on the left, "From Pixel 8" under either (RemoteBubbles.ts) */
+   right like the harness's own, the Halo's on the left, "From Pixel 8" under either (RemoteBubbles.ts) */
 .nm-remote { display: flex; flex-direction: column; gap: 4px; margin: 6px 0; }
 .nm-remote-user { align-items: flex-end; }
 .nm-remote-assistant { align-items: flex-start; }
@@ -263,7 +263,7 @@ html[data-nm-platform='darwin']:not([data-nm-fullscreen]) .nm-col-top { height: 
 
 /* ---- the pinned agent header over the conversation -------------------- */
 header[data-window-drag]:has(.nm-header) { position: relative; min-height: var(--nm-header-h); }
-/* In the Muse look the header is a scrim rather than a bar: it lies over the conversation, which scrolls
+/* In the Halo look the header is a scrim rather than a bar: it lies over the conversation, which scrolls
    under it and dissolves into the canvas (the canvas at 80 percent at the top edge, 35 percent past the
    middle, clear at the bottom, as the phone draws it), and no line runs under it. The thread keeps the
    header's height clear at its top, so the first message starts under the face rather than behind it.
@@ -306,14 +306,14 @@ html[data-nm-muse] [data-slot="conversation.header"]:has(.nm-header) ~ [data-con
 .nm-invite-code .nm-pill { margin-left: auto; letter-spacing: 0; }
 .nm-invite-link { font-size: 13px; color: var(--dsw-alias-label-secondary); word-break: break-all; }
 
-/* ---- the Muse conversation: the harness's DOM, Muse's shapes ----------- */
+/* ---- the Halo conversation: the harness's DOM, Halo's shapes ----------- */
 /* The composer card becomes one pill: + | the text | send. */
 html[data-nm-muse] [data-composer-card] { display: flex !important; flex-direction: row !important; flex-wrap: wrap; align-items: flex-end; gap: 2px 4px; padding: 5px 5px 5px 6px !important; border-radius: 26px !important; background: var(--nm-field) !important; box-shadow: 0 0 0 1px var(--nm-field-border), 0 6px 24px rgba(0,0,0,0.10) !important; }
 html[data-nm-muse] [data-composer-card] > [data-input-scroll] { flex: 1 1 120px; min-width: 0; order: 0; margin: 0 !important; }
 html[data-nm-muse] [data-composer-card] > [data-input-scroll] [contenteditable] { min-height: 34px !important; padding: 5px 6px 5px 8px !important; }
 html[data-nm-muse] [data-composer-card] [data-composer-placeholder] { inset: 5px 6px auto 8px !important; color: transparent !important; }
 html[data-nm-muse] [data-composer-card] [data-composer-placeholder]::before { content: var(--nm-placeholder, "Message"); position: absolute; inset: 0 auto auto 0; color: var(--dsw-alias-label-tertiary); white-space: nowrap; }
-/* An empty chat: no greeting, the composer sits at the bottom like Muse's. */
+/* An empty chat: no greeting, the composer sits at the bottom like Halo's. */
 html[data-nm-muse] [data-conversation-scroll]:has([class*="_composerHero"]) { justify-content: flex-end; }
 html[data-nm-muse] [class*="_composerHero"] > [class*="_root"]:first-child { display: none; }
 /* no workspace/preset chips over an empty chat: the inert composer itself opens the workspace picker when one is needed */
@@ -341,9 +341,9 @@ html[data-nm-muse] [data-composer-card] ~ [class*="_dock"] { display: none !impo
 /* recording: the red breathes (no ring running outward) */
 .nm-mic.nm-live { color: #fff; background: #e0245e; box-shadow: 0 0 0 4px rgba(224,36,94,0.25); animation: nm-mic-pulse 4.8s ease-in-out infinite; }
 @keyframes nm-mic-pulse { 0%, 100% { opacity: 0.72; } 50% { opacity: 1; } }
-/* Muse keeps the chat bare: no tool-step disclosure, no usage, no fork, no context rows */
+/* Halo keeps the chat bare: no tool-step disclosure, no usage, no fork, no context rows */
 html[data-nm-muse] [data-chat-flow-kind="context"] { display: none !important; }
-/* the "done in 6 s" accordion goes; what the agent said along the way stays a bubble, as Muse shows it (the harness folds it under the accordion with hidden=until-found) */
+/* the "done in 6 s" accordion goes; what the agent said along the way stays a bubble, as Halo shows it (the harness folds it under the accordion with hidden=until-found) */
 html[data-nm-muse] [data-chat-flow-kind="turn-process"] { display: none !important; }
 html[data-nm-muse] [data-turn-process-member]:not([data-chat-flow-kind="assistant-step"]):not([data-chat-flow-kind="tool-call"]) { display: none !important; }
 html[data-nm-muse] [data-chat-flow-kind="assistant-step"][hidden] { display: block !important; content-visibility: visible !important; }
@@ -361,7 +361,7 @@ html[data-nm-muse] [data-chat-flow-kind="turn-tail"] [class*="_endInfo"] > :not(
 html[data-nm-muse] [data-chat-flow-kind="turn-tail"] [data-clock="end"] > button[class*="_action"]:nth-of-type(2) { display: none !important; }
 .nm-quote-act { width: 24px; height: 24px; border: 0; padding: 0; border-radius: 6px; background: transparent; color: var(--dsw-alias-label-tertiary); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
 .nm-quote-act:hover { background: var(--nm-hover); color: var(--dsw-alias-label-primary); }
-/* the time of a message sits centred over it, small and grey, as Muse's do */
+/* the time of a message sits centred over it, small and grey, as Halo's do */
 html[data-nm-muse] [data-chat-flow-kind="user"] [class*="_userRow"] { position: relative; margin-top: 18px; }
 html[data-nm-muse] [data-chat-flow-kind="user"] [data-clock="start"] { position: absolute; left: 0; right: 0; top: -18px; justify-content: center; opacity: 1 !important; }
 html[data-nm-muse] [data-chat-flow-kind="user"] [data-clock="start"] [class*="_timeStart"] { font-size: 11px; color: var(--dsw-alias-label-dimmed); }
@@ -380,14 +380,14 @@ html[data-nm-muse] [data-chat-flow-kind="assistant-step"] [data-slot="conversati
 html[data-nm-muse] [data-chat-flow-kind="assistant-step"] [data-slot="conversation.chat.node"] > [class*="_root"] > [class*="_body"]:empty { display: none; }
 html[data-nm-muse] [data-chat-flow-kind="assistant-step"] [data-slot="conversation.chat.node"] > [class*="_root"] > [class*="_body"] > [class*="_markdown"] > :first-child { margin-top: 0; }
 html[data-nm-muse] [data-chat-flow-kind="assistant-step"] [data-slot="conversation.chat.node"] > [class*="_root"] > [class*="_body"] > [class*="_markdown"] > :last-child { margin-bottom: 0; }
-/* Timestamps and per-message actions appear on hover, as Muse keeps its chat quiet. */
+/* Timestamps and per-message actions appear on hover, as Halo keeps its chat quiet. */
 html[data-nm-muse] [data-chat-flow-kind="user"] [class*="_actions"][data-clock],
 html[data-nm-muse] [data-chat-flow-kind="turn-tail"] [class*="_actions"][data-clock] { opacity: 0; transition: opacity 160ms; }
 html[data-nm-muse] [data-chat-flow-kind="user"]:hover [class*="_actions"][data-clock],
 html[data-nm-muse] [data-chat-flow-kind="user"] [class*="_actions"][data-clock]:focus-within,
 html[data-nm-muse] [data-chat-flow-kind="turn-tail"]:hover [class*="_actions"][data-clock],
 html[data-nm-muse] [data-chat-flow-kind="turn-tail"] [class*="_actions"][data-clock]:focus-within { opacity: 1; }
-/* The session header keeps only what Muse shows up there: Invite and the corner;
+/* The session header keeps only what Halo shows up there: Invite and the corner;
    a side chat shows its title at the left (a new one reads "New side chat"). */
 html[data-nm-muse] [data-slot="conversation.session.header"] [class*="_titleCluster"] { display: none; }
 html[data-nm-muse][data-nm-side] [data-slot="conversation.session.header"] [class*="_titleCluster"] { display: flex; }
@@ -540,7 +540,7 @@ html[data-nm-platform='darwin']:not([data-nm-fullscreen]) .nm-doc-bar { padding-
 .nm-task-label { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--dsw-alias-label-tertiary); }
 .nm-task-pre { margin: 0; padding: 12px 14px; border-radius: 12px; background: var(--dsw-alias-bg-layer-2); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; line-height: 1.55; white-space: pre-wrap; word-break: break-word; max-height: 320px; overflow: auto; }
 /* The approval card: a dark rounded card with a shield, Allow in blue. */
-/* The approval card, Muse-shaped: shield + headline, Allow (blue) first, then Reject. */
+/* The approval card, Halo-shaped: shield + headline, Allow (blue) first, then Reject. */
 html[data-nanomuse] [data-approval-key] > div { background: var(--nm-card) !important; border: 1px solid var(--nm-divider) !important; border-radius: 18px !important; box-shadow: 0 10px 30px rgba(0,0,0,0.18) !important; padding: 14px 16px !important; outline: none !important; }
 html[data-nanomuse] [data-approval-key] > div > :first-child { font-size: 12px; color: var(--dsw-alias-label-tertiary); background: transparent !important; padding: 0 !important; border: 0 !important; margin-bottom: 6px; }
 html[data-nanomuse] [data-approval-key] > div > :first-child::before { content: ''; display: inline-block; width: 16px; height: 16px; margin-right: 6px; vertical-align: -3px; background: currentColor; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6.2v5.3c0 4.4 3 7.6 7 9 4-1.4 7-4.6 7-9V6.2z"/><path d="m9 12 2 2 4-4"/></svg>') center / contain no-repeat; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6.2v5.3c0 4.4 3 7.6 7 9 4-1.4 7-4.6 7-9V6.2z"/><path d="m9 12 2 2 4-4"/></svg>') center / contain no-repeat; }
@@ -635,7 +635,7 @@ html[data-nm-platform='darwin']:not([data-nm-fullscreen]) .nm-pf-top { padding-t
 .nm-settings-body .nm-page { padding: 0; height: auto; overflow: visible; }
 .nm-settings-body .nm-page h1 { display: none; }
 .nm-general { display: flex; flex-direction: column; }
-/* General, Muse's way: the account card, the usage bars, the key cap */
+/* General, Halo's way: the account card, the usage bars, the key cap */
 .nm-usage { padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
 .nm-usage-row { display: flex; align-items: center; justify-content: space-between; font-size: 14px; }
 .nm-usage-plan { font-weight: 600; }
@@ -688,7 +688,7 @@ html[data-nm-platform='darwin']:not([data-nm-fullscreen]) .nm-pf-top { padding-t
 .nm-hotkey-hint { font-size: 12px; color: var(--dsw-alias-label-secondary); text-align: right; white-space: normal; line-height: 1.4; }
 .nm-harness-rows > [data-slot] > * { border-bottom: 1px solid var(--nm-divider); }
 .nm-harness-rows > [data-slot] > :last-child { border-bottom: 0; }
-/* Connectors, Muse's shape: a search, connected / available rows with a trailing Connect, a detail per connector */
+/* Connectors, Halo's shape: a search, connected / available rows with a trailing Connect, a detail per connector */
 .nm-cn-search { margin: 0 0 4px; height: 36px; }
 .nm-cn-row { padding: 0; gap: 0; }
 .nm-cn-main { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 11px 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
@@ -1040,7 +1040,7 @@ html[data-nm-platform='darwin']:not([data-nm-fullscreen]) .nm-lib-col-top { heig
 .nm-view-frame { flex: 1; border: 0; background: #fff; }
 .nm-view-loading { flex: 1; display: flex; align-items: center; justify-content: center; }
 
-/* a Muse section inside one of the harness's own pages (General's App behavior) */
+/* a Halo section inside one of the harness's own pages (General's App behavior) */
 .nm-section-inline { margin-top: 18px; padding: 0; }
 .nm-section-inline h2 { font-size: 13px; font-weight: 600; color: var(--dsw-alias-label-secondary); margin: 0 0 8px; }
 
@@ -1088,7 +1088,7 @@ html[data-nm-platform='darwin']:not([data-nm-fullscreen]) .nm-lib-col-top { heig
 .nm-sheet-steps { margin: 0 0 12px; padding-left: 20px; color: var(--dsw-alias-label-secondary); font-size: 13px; line-height: 1.6; }
 
 /* ---- the trajectory of a hands run, in the chat (Trajectory.tsx) ------- */
-/* The phone stage's hues: Muse's action blue and its cyan, for the marks drawn on a step's picture. */
+/* The phone stage's hues: Halo's action blue and its cyan, for the marks drawn on a step's picture. */
 .nm-traj { --nm-traj-accent: #0a66e4; --nm-traj-cyan: #06b6d4; display: block; margin: 8px 0 10px; }
 .nm-traj-card { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 100%; box-sizing: border-box; padding: 10px 12px 12px; border-radius: 16px; background: var(--nm-card, var(--dsw-alias-bg-layer-2)); box-shadow: inset 0 0 0 1px var(--nm-field-border, var(--nm-divider)); color: var(--dsw-alias-label-primary); outline: none; }
 .nm-traj-card:focus-visible { box-shadow: inset 0 0 0 2px var(--nm-accent); }
