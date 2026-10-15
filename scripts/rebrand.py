@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Turn the OpenMinis tree in android/ into nanoMuse. Idempotent; re-run after every
+"""Turn the OpenMinis tree in android/ into Halo. Idempotent; re-run after every
 upstream pull (CONTRIBUTING.md), then scripts/gen-android-icons.py.
 
 What it changes, and only this:
 
 - Gradle: applicationId, versionCode / versionName (the Kotlin package and namespace stay).
 - The places that hard-code the package id (shortcuts, the accessibility service id).
-- The product name: "Minis" -> "nanoMuse" in the 17 strings.xml and in Kotlin string
+- The product name: "Minis" -> "Halo" in the 17 strings.xml and in Kotlin string
   literals (never in identifiers, paths such as /var/minis, or MinisSkills).
 - The Soul defaults (agent name and header emoji).
 - Links: update source, GitHub repository, issues, privacy policy.
@@ -15,12 +15,12 @@ What it changes, and only this:
   notification also carries the agent's face as its large icon (Muse: the agent
   is the sender).
 - "<name> is browsing": the browser banner string takes the Soul name (%1$s).
-- A handful of first-run / notification strings reworded in nanoMuse's voice
+- A handful of first-run / notification strings reworded in Halo's voice
   (COPY below, en + zh + zh-rTW; the other locales keep the upstream text).
 
 - iOS (android/src/ios, when present): the bundle ids (com.openminis.app* → io.github.nanomuse.app*,
   including the app group and iCloud container), the display names, MARKETING_VERSION /
-  CURRENT_PROJECT_VERSION, "Minis" -> "nanoMuse" in Swift string literals and in
+  CURRENT_PROJECT_VERSION, "Minis" -> "Halo" in Swift string literals and in
   Localizable.xcstrings (keys renamed, every translation updated), the About links, the
   Soul emoji, the accent colour. Icons: scripts/gen-ios-icons.py.
 
@@ -47,10 +47,10 @@ RES = MAIN / "res"
 IOS = ROOT / "android" / "src" / "ios"
 
 APP_ID = "io.github.nanomuse.app"
-NAME = "nanoMuse"
+NAME = "Halo"
 VERSION_NAME = "1.0.5"
 VERSION_CODE = 48
-REPO = "nano-muse/nanoMuse"
+REPO = "CollinMLewis/HALOGT40"
 REPO_URL = f"https://github.com/{REPO}"
 PRIVACY_URL = f"{REPO_URL}/blob/main/docs/privacy.md"
 
@@ -149,8 +149,8 @@ def links() -> None:
     edit(
         JAVA / "data" / "UpdateChecker.kt",
         [
-            (r'private const val OWNER = "[^"]+"', 'private const val OWNER = "nano-muse"'),
-            (r'private const val REPO = "[^"]+"', 'private const val REPO = "nanoMuse"'),
+            (r'private const val OWNER = "[^"]+"', 'private const val OWNER = "CollinMLewis"'),
+            (r'private const val REPO = "[^"]+"', 'private const val REPO = "HALOGT40"'),
             (
                 r'const val RELEASES_URL: String = "[^"]+"',
                 f'const val RELEASES_URL: String = "{REPO_URL}/releases"',
@@ -279,25 +279,25 @@ def notification_faces() -> None:
             changed.append(str(path.relative_to(ROOT)))
 
 
-# Reworded in nanoMuse's voice. Locale dir -> string name -> text.
+# Reworded in Halo's voice. Locale dir -> string name -> text.
 COPY: dict[str, dict[str, str]] = {
     "values": {
         "sessionlist_welcome_subtitle": "Three steps, and you have an assistant that lives on your phone.",
         "about_minis_tagline": "An open-source personal agent for every device you own. On this phone today; everything runs here, with your own model.",
         "onboarding_welcome_subtitle": "An AI assistant with its own terminal and browser, running on this phone.",
-        "bg_service_notification_title": "nanoMuse is working",
+        "bg_service_notification_title": "Halo is working",
     },
     "values-zh": {
         "sessionlist_welcome_subtitle": "三步之后，你就有一个住在手机里的助理。",
         "about_minis_tagline": "一个开源的个人智能体，面向你的所有设备。目前在这台手机上：一切都在本机运行，模型由你自己带。",
         "onboarding_welcome_subtitle": "有自己的终端和浏览器、能用这台手机的 AI 助理。",
-        "bg_service_notification_title": "nanoMuse 正在工作",
+        "bg_service_notification_title": "Halo 正在工作",
     },
     "values-zh-rTW": {
         "sessionlist_welcome_subtitle": "三步之後，你就有一個住在手機裡的助理。",
         "about_minis_tagline": "一個開源的個人智慧體，面向你的所有裝置。目前在這支手機上：一切都在本機執行，模型由你自己帶。",
         "onboarding_welcome_subtitle": "有自己的終端機和瀏覽器、能用這支手機的 AI 助理。",
-        "bg_service_notification_title": "nanoMuse 正在工作",
+        "bg_service_notification_title": "Halo 正在工作",
     },
 }
 
